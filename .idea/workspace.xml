@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldlMap.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/Grass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/MapDirection.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/Vector2d.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="grass,mapdir,vector">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop/Animal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop/AnimalReproducer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop/IMapElement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop/IPositionObserver.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop/MapElementBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop/MutationType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop/MyRandom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Grass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Plant.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +32,7 @@
       <list>
         <option value="Enum" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -47,14 +52,17 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/Studia/obiektowe/oolab/ooloab",
+    "last_opened_file_path": "D:/Studia/obiektowe/projekty/projekt_obiektowe_1",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Gradle.projekt_obiektowe_1">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -111,8 +119,19 @@
       <workItem from="1670505036608" duration="103000" />
       <workItem from="1670515343787" duration="11000" />
       <workItem from="1670517734444" duration="3930000" />
-      <workItem from="1670581323533" duration="3316000" />
+      <workItem from="1670581323533" duration="3372000" />
+      <workItem from="1670598021450" duration="331000" />
+      <workItem from="1670606841967" duration="729000" />
+      <workItem from="1670695709521" duration="8522000" />
     </task>
+    <task id="LOCAL-00001" summary="grass,mapdir,vector">
+      <created>1670586575378</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1670586575378</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -128,5 +147,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="grass,mapdir,vector" />
+    <option name="LAST_COMMIT_MESSAGE" value="grass,mapdir,vector" />
   </component>
 </project>
