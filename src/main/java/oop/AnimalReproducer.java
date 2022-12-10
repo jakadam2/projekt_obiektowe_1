@@ -20,7 +20,7 @@ public class AnimalReproducer {
     }
 
     public Animal createAnimal(){
-        boolean isLeft = generator.nextBoolean();
+        //  tu trzeba wpisac przepis na zwierzaka;
     }
 
 

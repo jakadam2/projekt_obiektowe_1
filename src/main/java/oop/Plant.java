@@ -1,8 +1,8 @@
 package oop;
 
-public class Plant {
+public class Plant implements IMapElement {
 
-    public final Vector2d position;//chyba może być public bo jest final
+    private final Vector2d position;//chyba może być public bo jest final
 
     public final int energy;//jak wyzej
 
@@ -10,5 +10,10 @@ public class Plant {
         this.position = position;
         this.energy = energy;
     }
+
+    @Override
+    public Vector2d getPosition(){return this.position;}
+
+
 
 }

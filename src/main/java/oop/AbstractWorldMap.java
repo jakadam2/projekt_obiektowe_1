@@ -1,5 +1,6 @@
 package oop;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -7,11 +8,20 @@ abstract class AbstractWorldMap implements IPositionObserver {
     private final int x;//włącznie
     private final int y;//włącznie
 
+    private final MutationType mutationType;
+    private final int plantPerDay;
     private Map<Vector2d,MapElementBox> boxes = new HashMap<>();
 
-    public AbstractWorldMap(int x, int y){
+    private final int maxMutationQuantity;
+    private final int minMutationQuanity;
+
+    public AbstractWorldMap(int x, int y,int plantPerDay,MutationType mutationType,int maxMutationQuantity,int minMutationQuanity){
         this.x = x;
         this.y = y;
+        this.plantPerDay = plantPerDay;
+        this.mutationType = mutationType;
+        this.minMutationQuanity = minMutationQuanity;
+        this.maxMutationQuantity = maxMutationQuantity;
     }
 
     public void place(IMapElement element){
@@ -53,10 +63,33 @@ abstract class AbstractWorldMap implements IPositionObserver {
         return boxes.get(position);
     }
 
-    private void checkEating(){
+    void checkEating(){
         for(MapElementBox box: boxes.values()){
-            if(box.includePlant){
+            if(box.includePlant()){
+                Animal[] animals = box.getAnimals();
+                if (animals.length == 0){break;}
+                Animal strongest = animals[0];
+                for(Animal animal:animals){
+                    if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
+                }
+                strongest.eatPlant(box.getPlant());
+                this.remove(box.getPlant());
+            }
+        }
+    }
 
+    void checkReproduction(){
+        for(MapElementBox box: boxes.values()){
+            if(box.includeAnimal()){
+                Animal[] animals = box.getAnimals();
+                if(animals.length > 1){
+                    //tu trzeba posortowac i wziac pierwsze 2
+                    Animal strongest = animals[0];
+                    Animal stronger = animals[1];
+                    AnimalReproducer reproducer = new AnimalReproducer(strongest,stronger,mutationType,maxMutationQuantity,minMutationQuanity);
+                    Animal child = reproducer.createAnimal();
+                    this.place(child);
+                }
             }
         }
     }

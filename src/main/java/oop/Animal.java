@@ -85,4 +85,9 @@ public class Animal implements IMapElement {
         return this.energy < this.necessaryEnergy;
     }
 
+    int getEnergy(){
+        int ans = this.energy;
+        return ans;
+    }
+
 }
