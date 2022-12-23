@@ -1,93 +1,81 @@
 package oop;
 
-import java.util.HashSet;
-import java.util.Random;
-import java.util.Set;
-
-public class Animal implements IMapElement {
-
-    private int livedDays;
-    private int energy;
-    private Vector2d position;
-    private MapDirection orientation;
-    private int[] genom;
-    private int activatedGen;
-
-    private final int necessaryEnergy;
-
-    private final int dayWastedEnergy;
-
-    public Set<IPositionObserver> observers = new HashSet<>();
-
-    AbstractWorldMap map;
-
+public class Animal implements IMapElement{
     private MyRandom generator = new MyRandom();
+    private Vector2d position;
+    private int[] genom;
+    private int energy;
+    private int livedDays;
+    private int activeGen;
+    private int eatenPlant;
+    private int child;
+    //private int deathDate;
+    private MoveType moveType;
+    private MutationType mutationType;
+    private AbstractWorldMap map;
 
-    public Animal(int startEnergy,int genomLength,int maxX,int maxY,AbstractWorldMap map,int necessaryEnergy,int dayWastedEnergy){//kiedy zwierze jest ddodawane na początku
-        this.livedDays = 0;
-        this.energy = startEnergy;
-        this.orientation = generator.nextDirection();
-        this.genom = generator.nextGenom(genomLength);
-        this.position = generator.nextPosition(maxX,maxY);
-        this.activatedGen = generator.nextInt(genomLength);
-        this.map = map;
-        this.necessaryEnergy = necessaryEnergy;
-        this.dayWastedEnergy = dayWastedEnergy;
-    }
+    private float loseBreedEnergy;
+    private int breedEnergy;
+    private MapDirection orientation;
 
-    public Animal(int startEnergy,int[] genom, Vector2d position,AbstractWorldMap map,int necessaryEnergy,int dayWastedEnergy){//kiedy zwierzę się rodzi
-        this.livedDays = 0;
-        this.energy = startEnergy;
-        this.position = position;
-        this.orientation  = generator.nextDirection();
-        this.activatedGen = generator.nextInt(genom.length);
-        this.map = map;
-        this.necessaryEnergy = necessaryEnergy;
-        this.dayWastedEnergy = dayWastedEnergy;
-    }
+    public Animal(Settings config){
+        position = generator.nextPosition(config.getMapWidth(),config.getMapHeight());
+        genom = generator.nextGenom(config.getGenomLength());
+        energy = config.getStartEnergyAnimal();
+        livedDays = 0;
+        eatenPlant = 0;
+        child = 0;
+        activeGen = generator.nextInt(config.getGenomLength());
+        moveType = config.getMoveType();
+        mutationType = config.getMutationType();
+        map = config.getMap();
+        orientation = generator.nextDirection();
+        breedEnergy = config.getBreedEnergy();
+        loseBreedEnergy = config.getBreedLoseEnergy();
+        map.place(this);
 
-    public Vector2d getPosition(){
-        return this.position;
     }
 
     public void move(){
-        this.orientation.rotate(genom[activatedGen]);
-        Vector2d cand = this.position.add(this.orientation.toUnitVector());
-        if(map.canMoveTo(cand)){
-            Vector2d oldPosition = this.position;//tu może być zonk
-            this.position = cand;
-            this.notifyObservers(oldPosition,this.position);
+        Vector2d nextPosition = this.position.add(orientation.toUnitVector());
+        Vector2d confPosition = map.checkFinalPosition(nextPosition);
+        if(confPosition.equals(this.position)){
+            this.orientation = orientation.rotate(4);
         }
-        this.activatedGen = (activatedGen + 1)%genom.length;
-        this.livedDays++;
-        this.energy -= dayWastedEnergy;
-    }
-
-    public void addObserver(IPositionObserver observer){
-        this.observers.add(observer);
-    }
-
-    public void removeObserver(IPositionObserver observer){
-        this.observers.remove(observer);
-    }
-
-    public void notifyObservers(Vector2d oldPosition,Vector2d newPosition){
-        for(IPositionObserver observer:observers){
-            observer.update(oldPosition,newPosition,this);
+        this.position = confPosition;
+        livedDays ++;
+        energy --;
+        this.activeGen = (this.activeGen + 1)%genom.length;
+        if(moveType == MoveType.RANDOM){
+            int rand = generator.nextInt(10);
+            if(rand < 2){
+                this.activeGen = generator.nextInt(genom.length);
+            }
         }
+        this.orientation = orientation.rotate(genom[activeGen]);
     }
 
-    void eatPlant(Plant plant){
-        this.energy += plant.energy;
+    public Vector2d getPosition() {
+        return position;
     }
 
-    boolean isDead(){
-        return this.energy < this.necessaryEnergy;
-    }
+    public Animal breed(Animal partner){
+        int newMotherEnergy = (int) (this.energy * this.loseBreedEnergy);
+        int newFatherEnergy = (int) (partner.energy * this.loseBreedEnergy);
+        int childEnergy = (partner.energy - newFatherEnergy) + (this.energy - newMotherEnergy);
+        partner.energy = newFatherEnergy;
+        this.energy = newMotherEnergy;
+        int[] childGenom = new int[genom.length];
+        int rand = generator.nextInt(2);
+        if(rand == 0){//silniejszy parter ma od lewej
+            if(this.energy > partner.energy){
+                int genPart = (this.energy/(this.energy + partner.energy)) * genom.length;
 
-    int getEnergy(){
-        int ans = this.energy;
-        return ans;
-    }
 
+
+            }
+        }
+
+
+    }
 }

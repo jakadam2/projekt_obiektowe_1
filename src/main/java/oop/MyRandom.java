@@ -1,17 +1,18 @@
 package oop;
 
 import java.util.Random;
-import java.util.Vector;
 
 public class MyRandom extends Random {
     private Random generator = new Random();
+
+    private Settings config;
     public MapDirection nextDirection(){
         int dir = generator.nextInt(8);
         return switch (dir){
             case 0 -> MapDirection.NORTH;
             case 1 -> MapDirection.NORTH_EAST;
             case 2 -> MapDirection.EAST;
-            case 3 -> MapDirection.SOUTH_EATS;
+            case 3 -> MapDirection.SOUTH_EAST;
             case 4 -> MapDirection.SOUTH;
             case 5 -> MapDirection.SOUTH_WEST;
             case 6 -> MapDirection.WEST;

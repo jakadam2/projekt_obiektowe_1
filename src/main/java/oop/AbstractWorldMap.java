@@ -5,65 +5,58 @@ import java.util.HashMap;
 import java.util.Map;
 
 abstract class AbstractWorldMap implements IPositionObserver {
-    private final int x;//włącznie
+    private final int x;//włącznie 500 0 - 499
     private final int y;//włącznie
-
-    private final MutationType mutationType;
     private final int plantPerDay;
     private Map<Vector2d,MapElementBox> boxes = new HashMap<>();
 
-    private final int maxMutationQuantity;
-    private final int minMutationQuanity;
-
-    public AbstractWorldMap(int x, int y,int plantPerDay,MutationType mutationType,int maxMutationQuantity,int minMutationQuanity){
-        this.x = x;
-        this.y = y;
-        this.plantPerDay = plantPerDay;
-        this.mutationType = mutationType;
-        this.minMutationQuanity = minMutationQuanity;
-        this.maxMutationQuantity = maxMutationQuantity;
+    public AbstractWorldMap(Settings config){
+        this.x = config.getMapWidth();
+        this.y = config.getMapHeight();
+        this.plantPerDay = config.getDailyPlant();
     }
 
     public void place(IMapElement element){
-        if(this.canMoveTo(element.getPosition())){
-            if(this.boxExistAt(element.getPosition())){
-                this.boxAt(element.getPosition()).add(element);
-            }
-            else{
-                MapElementBox box = new MapElementBox(element.getPosition());
-                boxes.put(element.getPosition(),box);
-                box.add(element);
-            }
+        if(!(element.getPosition().x <= this.x && element.getPosition().y <= this.y)){throw new IllegalArgumentException("WRONG POSITION");}
+        if(boxes.get(element.getPosition()) == null){
+            MapElementBox newBox = new MapElementBox(element.getPosition());//wywalic jak nie korzysta z pozycji
+            newBox.add(element);
+            boxes.put(element.getPosition(),newBox);
+        }
+        else{
+            boxes.get(element.getPosition()).add(element);
         }
     }
 
-    public void remove(IMapElement element){// mozna tu rzucic wyjatek gdyby jakims cudem to zwierze bylo zdjete
+    abstract Vector2d checkFinalPosition(Vector2d cand);
+
+    @Override
+    public void update(Vector2d oldPosition, Vector2d newPosition, Animal animal) {
+        this.boxes.get(oldPosition).remove(animal);
+        if(this.boxes.get(oldPosition).isEmpty()){this.boxes.remove(oldPosition);}
+        if(boxes.get(newPosition) == null){
+            MapElementBox newBox = new MapElementBox(newPosition);//wywalic jak nie korzysta z pozycji
+            newBox.add(animal);
+            boxes.put(newPosition,newBox);
+        }
+        else{
+            boxes.get(newPosition).add(animal);
+        }
+    }
+
+
+
+    /*public void remove(IMapElement element){// mozna tu rzucic wyjatek gdyby jakims cudem to zwierze bylo zdjete
         this.boxAt(element.getPosition()).remove(element);
         if(boxAt(element.getPosition()).isEmpty()){
             boxes.remove(element.getPosition());
         }
     }
 
-    @Override
-    public void update(Vector2d oldPosition, Vector2d newPosition, Animal animal) {//bo tak naprawde to mogę tylko zwierzeta przesuwac, trawe usuwam
-        this.boxAt(oldPosition).remove(animal);//odszukuje go po starej
-        //tu niech usuwa ewntualnie pusty box
-        this.place(animal);//tu juz ma nowa pozycje wiec chyba git
-    }
 
-    public boolean canMoveTo(Vector2d cand){
-        return cand.x >= 0 && cand.x <= this.x && cand.y >= 0 && cand.y <= this.y;
-    }
 
-    private boolean boxExistAt(Vector2d position){
-        return boxes.get(position) != null;
-    }
 
-    private MapElementBox boxAt(Vector2d position){
-        return boxes.get(position);
-    }
-
-    void checkEating(){
+   /* void checkEating(){
         for(MapElementBox box: boxes.values()){
             if(box.includePlant()){
                 Animal[] animals = box.getAnimals();
@@ -93,6 +86,5 @@ abstract class AbstractWorldMap implements IPositionObserver {
             }
         }
     }
-
-
+*/
 }

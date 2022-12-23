@@ -1,13 +1,14 @@
 package oop;
 
 import java.util.Random;
+import java.util.Vector;
 
 public class AnimalReproducer {
 
     private Random generator = new Random();
     private final Animal mother;
     private final Animal father;
-    private final MutationType mutationType;
+    private final MutationType mutationType;//przenies to do zwierzęcia
     private final int maxMutationQuantity;
     private final int minMutationQuanity;
 
@@ -20,7 +21,10 @@ public class AnimalReproducer {
     }
 
     public Animal createAnimal(){
-        //  tu trzeba wpisac przepis na zwierzaka;
+
+
+
+
     }
 
 

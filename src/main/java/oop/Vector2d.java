@@ -1,6 +1,8 @@
 package oop;
 
-public class Vector2d {
+import java.util.Objects;
+
+public class Vector2d{
 
     public final int x;
 
@@ -16,23 +18,19 @@ public class Vector2d {
         return "(" + x + "," + y + ")";}
 
     public Vector2d add(Vector2d other){
-        int newX;
-        int newY;
-        newX = this.x + other.x;
-        newY = this.y + other.y;
-        return new Vector2d(newX,newY);
+        return new Vector2d(this.x + other.x,this.y + other.y);
     }
 
     @Override
     public boolean equals(Object other){
-        if( other.getClass() != Vector2d.class){return false;}
+        if(other.getClass() != Vector2d.class){return false;}
         Vector2d clone = (Vector2d) other;
         return this.x == clone.x && this.y == clone.y;
     }
 
     @Override
     public int hashCode(){
-        return this.x * this.y;
+        return Objects.hash(x,y);
     }
 
 
