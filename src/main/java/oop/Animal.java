@@ -1,8 +1,6 @@
 package oop;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Animal implements IMapElement{
     private MyRandom generator = new MyRandom();
@@ -11,6 +9,8 @@ public class Animal implements IMapElement{
     private int energy;
     private int livedDays;
     private int activeGen;
+
+    private Set<IPositionObserver> observers = new HashSet<>();
     private int eatenPlant;
     private int child;
     //private int deathDate;
@@ -153,4 +153,21 @@ public class Animal implements IMapElement{
         return new Animal(this, genome, energy);
     }
 
+    private void notifyObservers(Vector2d oldPosition,Vector2d newPosition){
+        for (IPositionObserver observer:observers){observer.update(oldPosition,newPosition,this);}
+    }
+
+    public void addObserver(IPositionObserver observer){
+        observers.add(observer);
+    }
+
+    public void removeObserver(IPositionObserver observer){
+        observers.remove(observer);
+    }
+
+    public int getEnergy(){return energy;}
+
+    public void eatPlant(Plant plant){
+        energy += plant.energy;
+    }
 }

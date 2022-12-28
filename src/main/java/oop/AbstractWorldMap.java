@@ -24,6 +24,9 @@ abstract class AbstractWorldMap implements IPositionObserver {
         else{
             boxes.get(element.getPosition()).add(element);
         }
+        if(element.getClass() == Animal.class){
+            ((Animal) element).addObserver(this);
+        }
     }
 
     abstract Vector2d checkFinalPosition(Vector2d curr,Vector2d cand);
@@ -42,17 +45,7 @@ abstract class AbstractWorldMap implements IPositionObserver {
         }
     }
 
-    /*public void remove(IMapElement element){// mozna tu rzucic wyjatek gdyby jakims cudem to zwierze bylo zdjete
-        this.boxAt(element.getPosition()).remove(element);
-        if(boxAt(element.getPosition()).isEmpty()){
-            boxes.remove(element.getPosition());
-        }
-    }
-
-
-
-
-   /* void checkEating(){
+    void checkEating(){
         for(MapElementBox box: boxes.values()){
             if(box.includePlant()){
                 Animal[] animals = box.getAnimals();
@@ -66,21 +59,34 @@ abstract class AbstractWorldMap implements IPositionObserver {
             }
         }
     }
+    public void remove(IMapElement element){// mozna tu rzucic wyjatek gdyby jakims cudem to zwierze bylo zdjete
+        this.boxAt(element.getPosition()).remove(element);
+        if(boxAt(element.getPosition()).isEmpty()){
+            boxes.remove(element.getPosition());
+        }
+    }
+
+    public MapElementBox boxAt(Vector2d position){
+        return boxes.get(position);
+    }
 
     void checkReproduction(){
         for(MapElementBox box: boxes.values()){
             if(box.includeAnimal()){
                 Animal[] animals = box.getAnimals();
                 if(animals.length > 1){
-                    //tu trzeba posortowac i wziac pierwsze 2
                     Animal strongest = animals[0];
-                    Animal stronger = animals[1];
-                    AnimalReproducer reproducer = new AnimalReproducer(strongest,stronger,mutationType,maxMutationQuantity,minMutationQuanity);
-                    Animal child = reproducer.createAnimal();
-                    this.place(child);
+                    for(Animal animal:animals){
+                        if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
+                    }
+                    Animal stronger = animals[0];
+                    for(Animal animal:animals){
+                        if (animal.getEnergy() > stronger.getEnergy() && !animal.equals(stronger)){stronger = animal;}
+                    }
+                    strongest.breed(stronger);
                 }
             }
         }
     }
-*/
+
 }
