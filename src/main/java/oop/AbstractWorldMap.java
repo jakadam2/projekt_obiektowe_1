@@ -29,7 +29,7 @@ abstract class AbstractWorldMap implements IPositionObserver {
         }
     }
 
-    abstract Vector2d checkFinalPosition(Vector2d curr,Vector2d cand);
+    abstract Vector2d checkFinalPosition(Animal animal,Vector2d cand);
 
     @Override
     public void update(Vector2d oldPosition, Vector2d newPosition, Animal animal) {

@@ -12,20 +12,18 @@ public class Earth extends AbstractWorldMap{
     }
 
     @Override
-    Vector2d checkFinalPosition(Vector2d curr,Vector2d cand) {
-
+    Vector2d checkFinalPosition(Animal animal,Vector2d cand) {
 
         if (cand.x > width) {
-            //cand.x = 0;
-            return new Vector2d(0,cand.y);
+            return new Vector2d(0, cand.y);
         }
         else if(cand.x < 0) {
-            //cand.x = width;
             return new Vector2d(width, cand.y);
         }
 
         if(cand.y > height || cand.y < height) {
-            return curr;
+            animal.orientation = animal.orientation.rotate(4);
+            return new Vector2d(cand.x, height);
         }
 
         return cand;

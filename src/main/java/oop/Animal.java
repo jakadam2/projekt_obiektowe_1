@@ -6,7 +6,7 @@ public class Animal implements IMapElement{
     private MyRandom generator = new MyRandom();
     private Vector2d position;
     private int[] genom;
-    private int energy;
+    protected int energy;
     private int livedDays;
     private int activeGen;
 
@@ -20,7 +20,7 @@ public class Animal implements IMapElement{
 
     private float loseBreedEnergy;
     private int breedEnergy;
-    private MapDirection orientation;
+    protected MapDirection orientation;
 
     private int minMutation;
     private int maxMutation;
@@ -66,7 +66,7 @@ public class Animal implements IMapElement{
 
     public void move(){
         Vector2d nextPosition = this.position.add(orientation.toUnitVector());
-        Vector2d confPosition = map.checkFinalPosition(this.position,nextPosition);
+        Vector2d confPosition = map.checkFinalPosition(this,nextPosition);
         if(confPosition.equals(this.position)){
             this.orientation = orientation.rotate(4);
         }
