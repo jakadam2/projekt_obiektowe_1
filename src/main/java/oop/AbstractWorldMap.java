@@ -1,6 +1,4 @@
 package oop;
-
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,7 +26,7 @@ abstract class AbstractWorldMap implements IPositionObserver {
         }
     }
 
-    abstract Vector2d checkFinalPosition(Vector2d cand);
+    abstract Vector2d checkFinalPosition(Vector2d curr,Vector2d cand);
 
     @Override
     public void update(Vector2d oldPosition, Vector2d newPosition, Animal animal) {
@@ -43,8 +41,6 @@ abstract class AbstractWorldMap implements IPositionObserver {
             boxes.get(newPosition).add(animal);
         }
     }
-
-
 
     /*public void remove(IMapElement element){// mozna tu rzucic wyjatek gdyby jakims cudem to zwierze bylo zdjete
         this.boxAt(element.getPosition()).remove(element);

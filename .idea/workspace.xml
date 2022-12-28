@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="dokonczona mechanika mapy">
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/MapType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/MoveType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/PlantType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/Settings.java" afterDir="false" />
+    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="poprawki v1">
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop/Earth.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop/Nether.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/AnimalReproducer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/AnimalReproducer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/MapDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/MapDirection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/MutationType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/MutationType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/MyRandom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/MyRandom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Plant.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Vector2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Vector2d.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +25,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -131,6 +122,9 @@
       <workItem from="1671042301131" duration="1207000" />
       <workItem from="1671046393283" duration="1446000" />
       <workItem from="1671797937608" duration="7664000" />
+      <workItem from="1671827445173" duration="40000" />
+      <workItem from="1671875603708" duration="568000" />
+      <workItem from="1672253701200" duration="1488000" />
     </task>
     <task id="LOCAL-00001" summary="grass,mapdir,vector">
       <created>1670586575378</created>
@@ -153,7 +147,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670712787736</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="poprawki v1">
+      <created>1671827476024</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1671827476024</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -174,6 +175,7 @@
     <MESSAGE value="grass,mapdir,vector" />
     <MESSAGE value="wstępny szkielet mechaniki" />
     <MESSAGE value="dokonczona mechanika mapy" />
-    <option name="LAST_COMMIT_MESSAGE" value="dokonczona mechanika mapy" />
+    <MESSAGE value="poprawki v1" />
+    <option name="LAST_COMMIT_MESSAGE" value="poprawki v1" />
   </component>
 </project>
