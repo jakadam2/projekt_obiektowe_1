@@ -1,6 +1,5 @@
 package oop;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 abstract class AbstractWorldMap implements IPositionObserver {
     private final int x;//włącznie 500 0 - 499
@@ -8,10 +7,19 @@ abstract class AbstractWorldMap implements IPositionObserver {
     private final int plantPerDay;
     private Map<Vector2d,MapElementBox> boxes = new HashMap<>();
 
+    private SortedMap<Vector2d,Integer> toxic;
+
+    private SortedMap<Vector2d,Integer> neutral;
+    private int plantEnergy;
+    private MyRandom generator = new MyRandom();
+    private final PlantType plantType;
+
     public AbstractWorldMap(Settings config){
         this.x = config.getMapWidth();
         this.y = config.getMapHeight();
         this.plantPerDay = config.getDailyPlant();
+        this.plantType = config.getPlantType();
+        this.plantEnergy = config.getEnergyPlant();
     }
 
     public void place(IMapElement element){
@@ -70,7 +78,8 @@ abstract class AbstractWorldMap implements IPositionObserver {
         return boxes.get(position);
     }
 
-    void checkReproduction(){
+    Set<Animal> checkReproduction(){
+        Set<Animal> toAdd = new HashSet<>();
         for(MapElementBox box: boxes.values()){
             if(box.includeAnimal()){
                 Animal[] animals = box.getAnimals();
@@ -83,9 +92,41 @@ abstract class AbstractWorldMap implements IPositionObserver {
                     for(Animal animal:animals){
                         if (animal.getEnergy() > stronger.getEnergy() && !animal.equals(stronger)){stronger = animal;}
                     }
-                    strongest.breed(stronger);
+                    toAdd.add(strongest.breed(stronger));
                 }
             }
+        }
+        return toAdd;
+    }
+
+    public void addGrass(){
+        if (plantType == PlantType.JUNGLE){
+            int grassField = (int) (0.2 * this.y);
+            int middle = this.y/2;
+            int start = middle - (grassField/2);
+            int stop = middle + (grassField/2);
+            int random = generator.nextInt(10);
+            Vector2d position;
+            if(random < 2){
+                int secondRandom = generator.nextInt(2);
+                if(secondRandom == 0){
+                    position = new Vector2d(generator.nextInt(x), generator.nextInt(start) );
+                }
+                else{
+                    position = new Vector2d(generator.nextInt(x),generator.nextInt(start) + stop );
+                }
+
+            }
+            else {
+                position = new Vector2d(generator.nextInt(x), start +generator.nextInt(grassField));
+                place(new Plant(position,plantEnergy));
+            }
+            place(new Plant(position,plantEnergy));
+        }
+
+        else {
+
+
         }
     }
 

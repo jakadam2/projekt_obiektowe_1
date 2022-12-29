@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="silnik,jedzenie,rozmnazanie">
+    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="chyba wszystko połączone">
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop/World.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Earth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Earth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Nether.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Nether.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/AnimalReproducer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +58,7 @@
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   }
 }</component>
-  <component name="RunManager" selected="Gradle.projekt_obiektowe_1">
+  <component name="RunManager" selected="Application.World">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -65,6 +67,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="World" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="oop.World" />
+      <module name="projekt_obiektowe_1.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="oop.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -92,11 +107,13 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.World" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Gradle.projekt_obiektowe_1" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.World" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -124,7 +141,8 @@
       <workItem from="1671797937608" duration="7664000" />
       <workItem from="1671827445173" duration="40000" />
       <workItem from="1671875603708" duration="568000" />
-      <workItem from="1672253701200" duration="4640000" />
+      <workItem from="1672253701200" duration="4666000" />
+      <workItem from="1672305376629" duration="6745000" />
     </task>
     <task id="LOCAL-00001" summary="grass,mapdir,vector">
       <created>1670586575378</created>
@@ -168,7 +186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672257755624</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="chyba wszystko połączone">
+      <created>1672258366421</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1672258366421</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +217,7 @@
     <MESSAGE value="poprawki v1" />
     <MESSAGE value="wprowadzenie zmian" />
     <MESSAGE value="silnik,jedzenie,rozmnazanie" />
-    <option name="LAST_COMMIT_MESSAGE" value="silnik,jedzenie,rozmnazanie" />
+    <MESSAGE value="chyba wszystko połączone" />
+    <option name="LAST_COMMIT_MESSAGE" value="chyba wszystko połączone" />
   </component>
 </project>

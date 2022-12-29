@@ -24,12 +24,16 @@ public class SimulationEngine {
     }
 
     public void run(){
+        Set<Animal> toAdd;
         while (true) {
             for (Animal animal : animals) {
                 animal.move();
             }
             map.checkEating();
-            map.checkReproduction();
+            toAdd = map.checkReproduction();
+            for(Animal animal: toAdd){
+                animals.add(animal);
+            }
         }
     }
 

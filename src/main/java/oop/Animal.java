@@ -13,7 +13,6 @@ public class Animal implements IMapElement{
     private Set<IPositionObserver> observers = new HashSet<>();
     private int eatenPlant;
     private int child;
-    //private int deathDate;
     private MoveType moveType;
     private MutationType mutationType;
     private AbstractWorldMap map;
@@ -170,4 +169,6 @@ public class Animal implements IMapElement{
     public void eatPlant(Plant plant){
         energy += plant.energy;
     }
+
+    public boolean isDead(){return this.energy < 0;}
 }
