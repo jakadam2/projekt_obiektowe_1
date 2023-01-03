@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="dalsze laczenie v2">
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" afterDir="false" />
+    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="w miare dziala">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Earth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Earth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,15 +48,17 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "D:/Studia/obiektowe/oolab/ooloab",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0"
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
 }]]></component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.World">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="C:\Program Files\Java\jdk-17.0.4.1" />
       <option name="MAIN_CLASS_NAME" value="oop.Gui.App" />
       <module name="projekt_obiektowe_1.main" />
+      <option name="VM_PARAMETERS" value="--module-path ${PATH_TO_FX} --add-modules javafx.fxml,javafx.controls,javafx.graphics" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="oop.Gui.*" />
@@ -164,7 +161,7 @@
       <workItem from="1672430882733" duration="573000" />
       <workItem from="1672433301297" duration="1355000" />
       <workItem from="1672590149454" duration="604000" />
-      <workItem from="1672765125016" duration="4574000" />
+      <workItem from="1672765125016" duration="6254000" />
     </task>
     <task id="LOCAL-00001" summary="grass,mapdir,vector">
       <created>1670586575378</created>
@@ -229,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672765664782</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="w miare dziala">
+      <created>1672770013168</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1672770013168</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,6 +271,7 @@
     <MESSAGE value="chyba wszystko połączone" />
     <MESSAGE value="dalsze laczenie" />
     <MESSAGE value="dalsze laczenie v2" />
-    <option name="LAST_COMMIT_MESSAGE" value="dalsze laczenie v2" />
+    <MESSAGE value="w miare dziala" />
+    <option name="LAST_COMMIT_MESSAGE" value="w miare dziala" />
   </component>
 </project>
