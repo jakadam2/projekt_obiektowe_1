@@ -56,9 +56,9 @@ abstract class AbstractWorldMap implements IPositionObserver {
     void checkEating(){
         for(MapElementBox box: boxes.values()){
             if(box.includePlant()){
-                Animal[] animals = box.getAnimals();
-                if (animals.length == 0){break;}
-                Animal strongest = animals[0];
+                Set<Animal> animals = box.getAnimals();
+                if (animals.size() == 0){break;}
+                Animal strongest = animals;
                 for(Animal animal:animals){
                     if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
                 }
@@ -78,25 +78,11 @@ abstract class AbstractWorldMap implements IPositionObserver {
         return boxes.get(position);
     }
 
-    Set<Animal> checkReproduction(){
-        Set<Animal> toAdd = new HashSet<>();
+    public Set<Animal> checkReproduction(){
         for(MapElementBox box: boxes.values()){
-            if(box.includeAnimal()){
-                Animal[] animals = box.getAnimals();
-                if(animals.length > 1){
-                    Animal strongest = animals[0];
-                    for(Animal animal:animals){
-                        if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
-                    }
-                    Animal stronger = animals[0];
-                    for(Animal animal:animals){
-                        if (animal.getEnergy() > stronger.getEnergy() && !animal.equals(stronger)){stronger = animal;}
-                    }
-                    toAdd.add(strongest.breed(stronger));
-                }
-            }
+            Animal[] animals = box.getAnimals();
         }
-        return toAdd;
+        return new HashSet<Animal>();
     }
 
     public void addGrass(){
@@ -125,7 +111,7 @@ abstract class AbstractWorldMap implements IPositionObserver {
         }
 
         else {
-
+            //tu trzeba cos napisac
 
         }
     }

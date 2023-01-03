@@ -2,24 +2,22 @@ package oop;
 
 public class Settings {
 
-    private int mapHeight;
-    private int mapWidth;
-    private MapType mapType;
-    private int startPlant;
-    private int energyPlant;
-    private int dailyPlant;
-    private PlantType plantType;
-    private int startAnimal;
-    private int startEnergyAnimal;
-    private int breedEnergy;
-    private float breedLoseEnergy;
-    private int maxMutation;
-    private int minMutation;
-    private MutationType mutationType;
-    private int genomLength;
-    private MoveType moveType;
-
-    private AbstractWorldMap map;
+    private int mapHeight = 10;
+    private int mapWidth = 20;
+    private MapType mapType = MapType.EARTH;
+    private int startPlant = 5;
+    private int energyPlant = 2;
+    private int dailyPlant = 5;
+    private PlantType plantType = PlantType.JUNGLE;
+    private int startAnimal = 5;
+    private int startEnergyAnimal = 3;
+    private int breedEnergy = 2;
+    private double breedLoseEnergy = 0.4;
+    private int maxMutation = 2;
+    private int minMutation = 0;
+    private MutationType mutationType = MutationType.LITTLE_CORRECTION;
+    private int genomLength = 10;
+    private MoveType moveType = MoveType.CORRECT;
 
     public int getMapHeight(){
         return mapHeight;
@@ -61,7 +59,7 @@ public class Settings {
         return breedEnergy;
     }
 
-    public float getBreedLoseEnergy() {
+    public double getBreedLoseEnergy() {
         return breedLoseEnergy;
     }
 
@@ -85,7 +83,4 @@ public class Settings {
         return moveType;
     }
 
-    public AbstractWorldMap getMap() {
-        return map;
-    }
 }

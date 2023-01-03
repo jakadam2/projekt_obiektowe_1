@@ -32,8 +32,8 @@ public class MapElementBox {
         }
     }
 
-    public Animal[] getAnimals(){
-        return (Animal[]) animals.toArray();
+    public Set<Animal> getAnimals(){
+        return animals;
     }
 
     public Vector2d getPosition(){

@@ -4,7 +4,7 @@ public class Nether extends AbstractWorldMap {
 
     private final int width;
     private final int height;
-    private final float loseTeleportationEnergy;
+    private final double loseTeleportationEnergy;
 
     private final MyRandom generator = new MyRandom();
 

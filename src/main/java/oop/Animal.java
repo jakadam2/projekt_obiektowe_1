@@ -17,14 +17,14 @@ public class Animal implements IMapElement{
     private MutationType mutationType;
     private AbstractWorldMap map;
 
-    private float loseBreedEnergy;
+    private double loseBreedEnergy;
     private int breedEnergy;
     protected MapDirection orientation;
 
     private int minMutation;
     private int maxMutation;
 
-    public Animal(Settings config){
+    public Animal(Settings config,AbstractWorldMap map){
         position = generator.nextPosition(config.getMapWidth(),config.getMapHeight());
         genom = generator.nextGenom(config.getGenomLength());
         energy = config.getStartEnergyAnimal();
@@ -34,13 +34,13 @@ public class Animal implements IMapElement{
         activeGen = generator.nextInt(config.getGenomLength());
         moveType = config.getMoveType();
         mutationType = config.getMutationType();
-        map = config.getMap();
+        this.map = map;
         orientation = generator.nextDirection();
         breedEnergy = config.getBreedEnergy();
         loseBreedEnergy = config.getBreedLoseEnergy();
         maxMutation = config.getMaxMutation();
         minMutation = config.getMinMutation();
-        map.place(this);
+        this.map.place(this);
 
     }
 
@@ -66,9 +66,11 @@ public class Animal implements IMapElement{
     public void move(){
         Vector2d nextPosition = this.position.add(orientation.toUnitVector());
         Vector2d confPosition = map.checkFinalPosition(this,nextPosition);
+        //System.out.println(confPosition.toString());
         if(confPosition.equals(this.position)){
             this.orientation = orientation.rotate(4);
         }
+        Vector2d oldPosition = this.position;
         this.position = confPosition;
         livedDays ++;
         energy --;
@@ -80,6 +82,8 @@ public class Animal implements IMapElement{
             }
         }
         this.orientation = orientation.rotate(genom[activeGen]);
+        this.position = confPosition;
+        notifyObservers(oldPosition,this.position);
     }
 
     public Vector2d getPosition() {
@@ -171,4 +175,9 @@ public class Animal implements IMapElement{
     }
 
     public boolean isDead(){return this.energy < 0;}
+
+    public Animal testBread(Animal parent){
+        int[]myGenom = new int[]{1,1,1,1,1,1,1,1,1,1};
+        return new Animal(this,myGenom,5);
+    }
 }
