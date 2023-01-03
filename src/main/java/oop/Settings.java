@@ -2,14 +2,14 @@ package oop;
 
 public class Settings {
 
-    private int mapHeight = 10;
-    private int mapWidth = 20;
+    private int mapHeight = 5;
+    private int mapWidth = 5;
     private MapType mapType = MapType.EARTH;
     private int startPlant = 5;
     private int energyPlant = 2;
     private int dailyPlant = 5;
     private PlantType plantType = PlantType.JUNGLE;
-    private int startAnimal = 5;
+    private int startAnimal = 100;
     private int startEnergyAnimal = 3;
     private int breedEnergy = 2;
     private double breedLoseEnergy = 0.4;

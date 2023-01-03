@@ -16,6 +16,8 @@ public class SimulationEngine {
 
     }
 
+
+
     public void run(){
         if(config.getMapType() == MapType.NETHER){
             map = new Nether(config);
@@ -24,22 +26,24 @@ public class SimulationEngine {
             map = new Earth(config);
         }
         Set<Animal> toAdd;
+        Set<Animal> toRemove;
+
         for(int i = 0; i < config.getStartAnimal(); i++){
             animals.add(new Animal(config,map));
         }
-        //while true
+        for(int i = 0; i < config.getDailyPlant();i ++){map.addGrass();}
+        map.checkEating();
+        toAdd = map.checkReproduction();
+        toRemove = map.checkDying();
         for(Animal animal:animals){
             animal.move();
-            System.out.println(animal.getPosition().toString());
         }
-        //map.addGrass();
-        /*toAdd = map.checkReproduction();
-        map.checkReproduction();
         for(Animal animal: toAdd){
             animals.add(animal);
-        }*/
-        map.checkEating();
-
+        }
+        for(Animal animal: toRemove){
+            animals.remove(animal);
+        }
 
     }
 }

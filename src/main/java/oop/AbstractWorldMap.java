@@ -58,7 +58,8 @@ abstract class AbstractWorldMap implements IPositionObserver {
             if(box.includePlant()){
                 Set<Animal> animals = box.getAnimals();
                 if (animals.size() == 0){break;}
-                Animal strongest = animals;
+                Iterator animalIterator  = animals.iterator();
+                Animal strongest = (Animal) animalIterator.next();
                 for(Animal animal:animals){
                     if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
                 }
@@ -78,11 +79,28 @@ abstract class AbstractWorldMap implements IPositionObserver {
         return boxes.get(position);
     }
 
-    public Set<Animal> checkReproduction(){
+    Set<Animal> checkReproduction(){
+        Set<Animal> toAdd = new HashSet<>();
         for(MapElementBox box: boxes.values()){
-            Animal[] animals = box.getAnimals();
+            if(box.includeAnimal()){
+                Set<Animal> animals = box.getAnimals();
+                if(animals.size() > 1){
+                    Iterator animalIterator  = animals.iterator();
+                    Animal strongest = (Animal) animalIterator.next();
+                    for(Animal animal:animals){
+                        if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
+                    }
+                    Animal stronger = (Animal) animalIterator.next();
+                    while(strongest.equals(stronger)){
+                    stronger = (Animal) animalIterator.next();}
+                    for(Animal animal:animals){
+                        if (animal.getEnergy() > stronger.getEnergy() && !animal.equals(stronger)){stronger = animal;}
+                    }
+                    toAdd.add(strongest.breed(stronger));
+                }
+            }
         }
-        return new HashSet<Animal>();
+        return toAdd;
     }
 
     public void addGrass(){
@@ -112,8 +130,23 @@ abstract class AbstractWorldMap implements IPositionObserver {
 
         else {
             //tu trzeba cos napisac
-
         }
     }
 
+  Set<Animal> checkDying(){
+        Set<Animal> toRemove = new HashSet<>();
+        for(MapElementBox box: boxes.values()){
+            if(box.includeAnimal()){
+                Set<Animal> animals = box.getAnimals();
+                for(Animal animal: animals){
+                    if(animal.isDead()){
+                        this.remove(animal);
+                        toRemove.add(animal);
+                    }
+                }
+
+            }
+        }
+        return toRemove;
+    }
 }
