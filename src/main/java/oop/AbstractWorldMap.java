@@ -1,9 +1,9 @@
 package oop;
 import java.util.*;
 
-abstract class AbstractWorldMap implements IPositionObserver {
-    private final int x;//włącznie 500 0 - 499
-    private final int y;//włącznie
+public abstract class AbstractWorldMap implements IPositionObserver {
+    public final int x;//włącznie 500 0 - 499
+    public final int y;//włącznie
     private final int plantPerDay;
     private Map<Vector2d,MapElementBox> boxes = new HashMap<>();
 
@@ -148,5 +148,11 @@ abstract class AbstractWorldMap implements IPositionObserver {
             }
         }
         return toRemove;
+    }
+
+    public boolean isOccupied(Vector2d position){
+        if(boxes.get(position) == null){return false;}
+        return true;
+
     }
 }

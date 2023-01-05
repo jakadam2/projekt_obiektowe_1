@@ -176,8 +176,8 @@ public class Animal implements IMapElement{
 
     public boolean isDead(){return this.energy < 0;}
 
-    public Animal testBread(Animal parent){
-        int[]myGenom = new int[]{1,1,1,1,1,1,1,1,1,1};
-        return new Animal(this,myGenom,5);
+    public int getColor(){
+        if(energy < 0){throw new IllegalStateException("DRAWING DEAD ANIMALS IS UNAVAILABLE");}
+        return ((int)energy/3) + 1;
     }
 }
