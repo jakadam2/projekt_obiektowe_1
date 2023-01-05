@@ -230,6 +230,9 @@ public class App extends Application implements IStateObserver {
         settings.setBreedLoseEnergy(Double.parseDouble(scan.next()));
         settings.setGenomLength(Integer.parseInt(scan.next()));
         settings.setMoveType(MoveType.valueOf(scan.next()));
+        settings.setMutationType(MutationType.valueOf(scan.next()));
+        settings.setMinMutation(Integer.parseInt(scan.next()));
+        settings.setMaxMutation(Integer.parseInt(scan.next()));
         startSimulation(settings);
     }
 
