@@ -13,6 +13,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Random;
 import java.util.Scanner;
 
 public class App extends Application implements IStateObserver {
@@ -37,23 +38,22 @@ public class App extends Application implements IStateObserver {
     });}
 
     private void drawInterior(GridPane grid,AbstractWorldMap map){
-        Platform.runLater(() -> {
+
         MapElementBox box;
         Vector2d currPosition;
         ImageView view = new ImageView();
-        Label label = new Label("ok");
-        for(int i = 0; i <= map.x; i ++){
-            for(int j = 0; j <= map.y; j ++){
+        //Label label = new Label("ok");
+        for(int i = 0; i < map.x; i ++){
+            for(int j = 0; j < map.y; j ++){
                 currPosition = new Vector2d(i,j);
                 if(map.isOccupied(currPosition)){
                     box = map.boxAt(currPosition);
                     view = representative.getView(box);
-
                     grid.add(view,i,j,1,1);
                 }
             }
         }
-    });}
+    }
 
     private void generateSettingsMenu(GridPane grid) {
         Platform.runLater(() -> {
@@ -247,13 +247,16 @@ public class App extends Application implements IStateObserver {
 
     @Override
     public void update(Stage myStage,AbstractWorldMap map) {
-       /*Platform.runLater(() -> {
         GridPane grid = new GridPane();
         drawInterior(grid,map);
+       Platform.runLater(() -> {
+           System.out.println("rysunek");
+
+
         grid.setGridLinesVisible(true);
-        Scene scene = new Scene(grid);
-        myStage.setScene(scene);
+        Scene scene1 = new Scene(grid);
+        myStage.setScene(scene1);
         myStage.show();
-    });}*/
-        System.out.println("rysunek");}
+    });}
+        //System.out.println("rysunek");}
 }

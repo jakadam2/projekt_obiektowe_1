@@ -51,8 +51,8 @@ public class ElementRepresentative {
         if(box.isEmpty()){throw new IllegalStateException("BOX CANNOT BE EMPTY");}
         if(box.includePlant()){return getReprezentation(box.getPlant());}
         Set<Animal> animals =  box.getAnimals();
-        Iterator iterator = animals.iterator();
-        Animal strongest = (Animal) iterator.next();
+        Iterator <Animal>iterator = animals.iterator();
+        Animal strongest = iterator.next();
         for(Animal animal:animals){
             if (animal.getColor() > strongest.getColor()){strongest = animal;}
         }

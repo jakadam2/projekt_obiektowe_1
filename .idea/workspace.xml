@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="wyświetlające się symulacje z błedami">
+    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="naprawione jedzenie, rozmnazanie,umieranie">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Animal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/MapElementBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/MapElementBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/ElementRepresentative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/ElementRepresentative.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +166,7 @@
       <workItem from="1672765125016" duration="6372000" />
       <workItem from="1672854452433" duration="49000" />
       <workItem from="1672854511338" duration="9806000" />
-      <workItem from="1672937831975" duration="18254000" />
+      <workItem from="1672937831975" duration="21222000" />
     </task>
     <task id="LOCAL-00001" summary="grass,mapdir,vector">
       <created>1670586575378</created>
@@ -254,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672944160017</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="naprawione jedzenie, rozmnazanie,umieranie">
+      <created>1672956648524</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1672956648524</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,7 +300,8 @@
     <MESSAGE value="w miare dziala" />
     <MESSAGE value="w miare dziala v2" />
     <MESSAGE value="wyświetlające się symulacje z błedami" />
-    <option name="LAST_COMMIT_MESSAGE" value="wyświetlające się symulacje z błedami" />
+    <MESSAGE value="naprawione jedzenie, rozmnazanie,umieranie" />
+    <option name="LAST_COMMIT_MESSAGE" value="naprawione jedzenie, rozmnazanie,umieranie" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

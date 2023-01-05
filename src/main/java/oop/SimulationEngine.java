@@ -1,6 +1,7 @@
 package oop;
 
 import javafx.stage.Stage;
+import oop.Gui.ElementRepresentative;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -10,6 +11,7 @@ public class SimulationEngine implements Runnable{
     Settings config;
     Stage myStage;
 
+    ElementRepresentative representative = new ElementRepresentative();
     Set<Animal> animals = new HashSet<>();
 
     AbstractWorldMap map;
@@ -42,15 +44,16 @@ public class SimulationEngine implements Runnable{
                 System.out.println("end");
                 break;
                 }
-            //moveDelay();
             notifyObservers();
+            moveDelay();
+
         }
 
     }
 
     private void moveDelay(){
         try {
-            Thread.sleep(1000);
+            Thread.sleep(100);
         }
         catch (InterruptedException exception){
             System.out.println("DELAY ERROR");
@@ -105,6 +108,10 @@ public class SimulationEngine implements Runnable{
         for (int i = 0; i < config.getDailyPlant(); i++){
             map.addGrass();
         }
+    }
+
+    private void createScene(){
+
     }
 
 }
