@@ -60,7 +60,7 @@ public class Animal implements IMapElement{
         orientation = generator.nextDirection();
         breedEnergy = mother.breedEnergy;
         loseBreedEnergy = mother.loseBreedEnergy;
-        map.place(this);
+        //map.place(this);
     }
 
     public void move(){
@@ -171,10 +171,12 @@ public class Animal implements IMapElement{
     public int getEnergy(){return energy;}
 
     public void eatPlant(Plant plant){
+        System.out.println(energy);
         energy += plant.energy;
+        System.out.println(energy);
     }
 
-    public boolean isDead(){return this.energy < 0;}
+    public boolean isDead(){return this.energy <= 0;}
 
     public int getColor(){
         if(energy < 0){throw new IllegalStateException("DRAWING DEAD ANIMALS IS UNAVAILABLE");}

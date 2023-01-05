@@ -14,12 +14,15 @@ public abstract class AbstractWorldMap implements IPositionObserver {
     private MyRandom generator = new MyRandom();
     private final PlantType plantType;
 
+    private final int breedEnergy;
+
     public AbstractWorldMap(Settings config){
         this.x = config.getMapWidth();
         this.y = config.getMapHeight();
         this.plantPerDay = config.getDailyPlant();
         this.plantType = config.getPlantType();
         this.plantEnergy = config.getEnergyPlant();
+        this.breedEnergy = config.getBreedEnergy();
     }
 
     public void place(IMapElement element){
@@ -54,6 +57,7 @@ public abstract class AbstractWorldMap implements IPositionObserver {
     }
 
     void checkEating(){
+        Set<Plant> toRemove = new HashSet<>();
         for(MapElementBox box: boxes.values()){
             if(box.includePlant()){
                 Set<Animal> animals = box.getAnimals();
@@ -64,9 +68,13 @@ public abstract class AbstractWorldMap implements IPositionObserver {
                     if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
                 }
                 strongest.eatPlant(box.getPlant());
-                this.remove(box.getPlant());
+                toRemove.add(box.getPlant());
             }
         }
+        for(Plant plant: toRemove){
+            remove(plant);
+        }
+
     }
     public void remove(IMapElement element){// mozna tu rzucic wyjatek gdyby jakims cudem to zwierze bylo zdjete
         this.boxAt(element.getPosition()).remove(element);
@@ -85,20 +93,26 @@ public abstract class AbstractWorldMap implements IPositionObserver {
             if(box.includeAnimal()){
                 Set<Animal> animals = box.getAnimals();
                 if(animals.size() > 1){
-                    Iterator animalIterator  = animals.iterator();
-                    Animal strongest = (Animal) animalIterator.next();
+                    Iterator<Animal> animalIterator  = animals.iterator();
+                    if(animalIterator.hasNext()){
+                    Animal strongest =  animalIterator.next();
+                        Animal stronger = strongest;
                     for(Animal animal:animals){
                         if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
                     }
-                    Animal stronger = (Animal) animalIterator.next();
-                    while(strongest.equals(stronger)){
-                    stronger = (Animal) animalIterator.next();}
+                    if(strongest.equals(stronger)){stronger = animalIterator.next();}
                     for(Animal animal:animals){
                         if (animal.getEnergy() > stronger.getEnergy() && !animal.equals(stronger)){stronger = animal;}
                     }
-                    toAdd.add(strongest.breed(stronger));
+                    if(strongest.getEnergy() > breedEnergy && stronger.getEnergy() > breedEnergy){
+                    toAdd.add(strongest.breed(stronger));}}
                 }
             }
+        }
+        //System.out.println("born");
+        //System.out.println(toAdd.size());
+        for(Animal animal:toAdd){
+            place(animal);
         }
         return toAdd;
     }
@@ -126,6 +140,7 @@ public abstract class AbstractWorldMap implements IPositionObserver {
                 place(new Plant(position,plantEnergy));
             }
             place(new Plant(position,plantEnergy));
+            //System.out.println(position.toString());
         }
 
         else {
@@ -140,19 +155,23 @@ public abstract class AbstractWorldMap implements IPositionObserver {
                 Set<Animal> animals = box.getAnimals();
                 for(Animal animal: animals){
                     if(animal.isDead()){
-                        this.remove(animal);
+                        //System.out.println("died");
                         toRemove.add(animal);
                     }
                 }
 
             }
         }
+        for (Animal animal: toRemove){
+            remove(animal);
+        }
+        //System.out.println("enddiying");
         return toRemove;
     }
 
     public boolean isOccupied(Vector2d position){
         if(boxes.get(position) == null){return false;}
         return true;
-
     }
+
 }

@@ -32,6 +32,11 @@ public class MapElementBox {
         }
     }
 
+    public void removeAnimal(Animal animal){
+        if(!animals.contains(animal)){throw new IllegalArgumentException("REMOVING IS ONLY ALLOWED IF ANIMAL LIVE IN THIS BOX");}
+        animals.remove(animal);
+    }
+
     public Set<Animal> getAnimals(){
         return animals;
     }
@@ -47,8 +52,7 @@ public class MapElementBox {
     public Plant getPlant(){return this.plant;}
 
     public boolean includePlant(){
-        boolean ans = this.includePlant;
-        return ans;
+        return this.includePlant;
     }
 
     public boolean includeAnimal(){

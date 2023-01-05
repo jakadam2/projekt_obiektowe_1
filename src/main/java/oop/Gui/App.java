@@ -23,11 +23,6 @@ public class App extends Application implements IStateObserver {
 
 
     public void init(){
-        /*Settings config = new Settings();
-        map = new Earth(config);
-        SimulationEngine engine = new SimulationEngine(config,map);
-        engine.run();*/
-
 
     }
     public void start(Stage primaryStage){
@@ -252,11 +247,13 @@ public class App extends Application implements IStateObserver {
 
     @Override
     public void update(Stage myStage,AbstractWorldMap map) {
-        Platform.runLater(() -> {
+       /*Platform.runLater(() -> {
         GridPane grid = new GridPane();
         drawInterior(grid,map);
+        grid.setGridLinesVisible(true);
         Scene scene = new Scene(grid);
         myStage.setScene(scene);
         myStage.show();
-    });}
+    });}*/
+        System.out.println("rysunek");}
 }
