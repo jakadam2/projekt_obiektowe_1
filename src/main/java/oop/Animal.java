@@ -186,8 +186,8 @@ public class Animal implements IMapElement{
         return ((int)energy/3) + 1;
     }
 
-    public String getGenom(){
-        return Arrays.toString(genom);
+    public int[] getGenom(){
+        return genom;
     }
 
     public String getActiveGen(){
@@ -198,8 +198,8 @@ public class Animal implements IMapElement{
         return Integer.toString(eatenPlant);
     }
 
-    public String getLivedDays(){
-        return Integer.toString(livedDays);
+    public int getLivedDays(){
+        return livedDays;
     }
 
     public String getChild(){

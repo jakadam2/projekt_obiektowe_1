@@ -7,6 +7,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import oop.*;
 
+import java.util.Arrays;
+
 public class AnimalRepresentative {
 
     private Animal animal;
@@ -46,7 +48,7 @@ public class AnimalRepresentative {
 
     private Label getGenomLabel(){
         if (animal == null){return new Label("-||-");}
-        return new Label("Genom: " + animal.getGenom());
+        return new Label("Genom: " + Arrays.toString(animal.getGenom()));
     }
 
     private Label getLivedDaysLabel(){

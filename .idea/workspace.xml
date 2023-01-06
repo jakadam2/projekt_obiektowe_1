@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="nawet sie ruszają">
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/AnimalRepresentative.java" afterDir="false" />
+    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="dzialająca mechanika mapy + działająca mechanika wyświetlania info o zwierzęciu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/AnimalRepresentative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/AnimalRepresentative.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/IStateObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/IStateObserver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" afterDir="false" />
@@ -51,7 +52,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Studia/obiektowe/oolab/ooloab&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Studia/obiektowe/projekty/projekt_obiektowe_1&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
@@ -169,7 +170,12 @@
       <workItem from="1672854452433" duration="49000" />
       <workItem from="1672854511338" duration="9806000" />
       <workItem from="1672937831975" duration="23302000" />
-      <workItem from="1672997464371" duration="6516000" />
+      <workItem from="1672997464371" duration="6663000" />
+      <workItem from="1673013201186" duration="83000" />
+      <workItem from="1673015027099" duration="269000" />
+      <workItem from="1673018188244" duration="148000" />
+      <workItem from="1673025780113" duration="599000" />
+      <workItem from="1673038111335" duration="3092000" />
     </task>
     <task id="LOCAL-00001" summary="grass,mapdir,vector">
       <created>1670586575378</created>
@@ -276,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672959615802</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="dzialająca mechanika mapy + działająca mechanika wyświetlania info o zwierzęciu">
+      <created>1673004119757</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1673004119757</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -319,7 +332,8 @@
     <MESSAGE value="wyświetlające się symulacje z błedami" />
     <MESSAGE value="naprawione jedzenie, rozmnazanie,umieranie" />
     <MESSAGE value="nawet sie ruszają" />
-    <option name="LAST_COMMIT_MESSAGE" value="nawet sie ruszają" />
+    <MESSAGE value="dzialająca mechanika mapy + działająca mechanika wyświetlania info o zwierzęciu" />
+    <option name="LAST_COMMIT_MESSAGE" value="dzialająca mechanika mapy + działająca mechanika wyświetlania info o zwierzęciu" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

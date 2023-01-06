@@ -1,4 +1,5 @@
 package oop;
+
 import java.util.*;
 
 public abstract class AbstractWorldMap implements IPositionObserver {
@@ -6,6 +7,10 @@ public abstract class AbstractWorldMap implements IPositionObserver {
     public final int y;//włącznie
     private final int plantPerDay;
     private Map<Vector2d,MapElementBox> boxes = new HashMap<>();
+
+    private List<Animal> deadAnimals = new ArrayList<>();
+
+    HashMap<int[], Integer> genomes = new HashMap<>();
 
     private SortedMap<Vector2d,Integer> toxic;
 
@@ -36,7 +41,16 @@ public abstract class AbstractWorldMap implements IPositionObserver {
             boxes.get(element.getPosition()).add(element);
         }
         if(element.getClass() == Animal.class){
-            ((Animal) element).addObserver(this);
+            Animal animal = (Animal) element;
+            animal.addObserver(this);
+
+            if(genomes.containsKey(animal.getGenom())) {
+                genomes.put(animal.getGenom(), genomes.get(animal.getGenom()) + 1);
+            }
+            else {
+                genomes.put(animal.getGenom(), 1);
+            }
+
         }
     }
 
@@ -67,6 +81,7 @@ public abstract class AbstractWorldMap implements IPositionObserver {
                 for(Animal animal:animals){
                     if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
                 }
+                System.out.println("Powinienem zjesc");
                 strongest.eatPlant(box.getPlant());
                 toRemove.add(box.getPlant());
             }
@@ -77,6 +92,7 @@ public abstract class AbstractWorldMap implements IPositionObserver {
 
     }
     public void remove(IMapElement element){// mozna tu rzucic wyjatek gdyby jakims cudem to zwierze bylo zdjete
+        moveAnimalToKilled(element);
         this.boxAt(element.getPosition()).remove(element);
         if(boxAt(element.getPosition()).isEmpty()){
             boxes.remove(element.getPosition());
@@ -95,17 +111,17 @@ public abstract class AbstractWorldMap implements IPositionObserver {
                 if(animals.size() > 1){
                     Iterator<Animal> animalIterator  = animals.iterator();
                     if(animalIterator.hasNext()){
-                    Animal strongest =  animalIterator.next();
+                        Animal strongest =  animalIterator.next();
                         Animal stronger = strongest;
-                    for(Animal animal:animals){
-                        if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
-                    }
-                    if(strongest.equals(stronger)){stronger = animalIterator.next();}
-                    for(Animal animal:animals){
-                        if (animal.getEnergy() > stronger.getEnergy() && !animal.equals(stronger)){stronger = animal;}
-                    }
-                    if(strongest.getEnergy() > breedEnergy && stronger.getEnergy() > breedEnergy){
-                    toAdd.add(strongest.breed(stronger));}}
+                        for(Animal animal:animals){
+                            if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
+                        }
+                        if(strongest.equals(stronger)){stronger = animalIterator.next();}
+                        for(Animal animal:animals){
+                            if (animal.getEnergy() > stronger.getEnergy() && !animal.equals(stronger)){stronger = animal;}
+                        }
+                        if(strongest.getEnergy() > breedEnergy && stronger.getEnergy() > breedEnergy){
+                            toAdd.add(strongest.breed(stronger));}}
                 }
             }
         }
@@ -145,10 +161,12 @@ public abstract class AbstractWorldMap implements IPositionObserver {
 
         else {
             //tu trzeba cos napisac
+
+            // 20% pol brac pod to
         }
     }
 
-  Set<Animal> checkDying(){
+    Set<Animal> checkDying(){
         Set<Animal> toRemove = new HashSet<>();
         for(MapElementBox box: boxes.values()){
             if(box.includeAnimal()){
@@ -174,4 +192,62 @@ public abstract class AbstractWorldMap implements IPositionObserver {
         return true;
     }
 
+    private void moveAnimalToKilled(Object object) {
+        if(object instanceof Animal) {
+            this.deadAnimals.add((Animal) object);
+        }
+    }
+
+    public int getAmountAnimals() {
+        int result = 0;
+        for (MapElementBox box : boxes.values()) {
+            if (box.includeAnimal()) {
+                result += box.getAnimals().size();
+            }
+        }
+        return result;
+    }
+
+    public int getAmountPlants() {
+        int result = 0;
+        for (MapElementBox box : boxes.values()) {
+            if (box.includePlant()) {
+                result += 1;
+            }
+        }
+        return result;
+    }
+
+    public int getAmountFreePlaces() {
+        int result = this.x * this.y;
+        result = result - boxes.size();
+        return result;
+    }
+
+    public int getAvgEnergy() {
+        int result = 0;
+        for (MapElementBox box : boxes.values()) {
+            if (box.includeAnimal()) {
+                Set<Animal> animals = box.getAnimals();
+                for(Animal animal: animals) {
+                    result += animal.energy;
+                }
+            }
+        }
+        return result / getAmountAnimals();
+    }
+
+    public int[] getMostPopularGenomes() {
+        return Collections.max(genomes.entrySet(), Comparator.comparingInt(Map.Entry::getValue)).getKey();
+    }
+
+    public int getAvgLifeDeadAnimals() {
+        if(deadAnimals.isEmpty()) return 0;
+        int result = 0;
+        for (Animal animal : deadAnimals) {
+            result += animal.getLivedDays();
+        }
+        result = result / deadAnimals.size();
+        return result;
+    }
 }

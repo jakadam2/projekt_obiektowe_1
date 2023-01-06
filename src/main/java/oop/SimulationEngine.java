@@ -1,5 +1,7 @@
 package oop;
 
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import oop.Gui.AnimalRepresentative;
 import oop.Gui.ElementRepresentative;
@@ -17,6 +19,10 @@ public class SimulationEngine implements Runnable{
     AnimalRepresentative animalRepresentative;
     AbstractWorldMap map;
     Set<IStateObserver> observers;
+
+    Button waitButton;
+
+    Button endButton;
 
     public SimulationEngine(Settings config,AbstractWorldMap map,Stage stage){
         this.myStage = stage;
@@ -69,7 +75,7 @@ public class SimulationEngine implements Runnable{
 
     private void notifyObservers(){
         for(IStateObserver observer:observers ){
-            observer.update(myStage,map,animalRepresentative);
+            observer.update(myStage,map,animalRepresentative,getButtons());
         }
     }
 
@@ -116,6 +122,26 @@ public class SimulationEngine implements Runnable{
         }
     }
 
+    public void setWaitButton(Button button){
+        waitButton = button;
+    }
+
+    public Button getWaitButton(){
+        return waitButton;
+    }
+
+    public void setEndButton(Button button){
+        endButton = button;
+    }
+
+    public Button getEndButton(){
+        return endButton;
+    }
+
+    public HBox getButtons(){
+
+        return new HBox(endButton,waitButton);
+    }
 
 
 }
