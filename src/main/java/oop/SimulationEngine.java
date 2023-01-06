@@ -1,19 +1,20 @@
 package oop;
 
 import javafx.stage.Stage;
+import oop.Gui.AnimalRepresentative;
 import oop.Gui.ElementRepresentative;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class SimulationEngine implements Runnable{
 
     Settings config;
     Stage myStage;
-
-    ElementRepresentative representative = new ElementRepresentative();
     Set<Animal> animals = new HashSet<>();
 
+    AnimalRepresentative animalRepresentative;
     AbstractWorldMap map;
     Set<IStateObserver> observers;
 
@@ -22,6 +23,7 @@ public class SimulationEngine implements Runnable{
         this.config = config;
         this.map = map;
         this.observers = new HashSet<>();
+        this.animalRepresentative = new AnimalRepresentative();
     }
 
 
@@ -30,6 +32,8 @@ public class SimulationEngine implements Runnable{
         Set<Animal> toAdd;
         Set<Animal> toRemove;
         initAnimals();
+        Iterator<Animal> animalIterator  = animals.iterator();
+        animalRepresentative.setAnimal(animalIterator.next());
         initPlants();
         System.out.println(animals.size());
         while(true){
@@ -44,6 +48,8 @@ public class SimulationEngine implements Runnable{
                 System.out.println("end");
                 break;
                 }
+            toRemove =  map.checkDying();
+            removeAnimals(toRemove);
             notifyObservers();
             moveDelay();
 
@@ -63,7 +69,7 @@ public class SimulationEngine implements Runnable{
 
     private void notifyObservers(){
         for(IStateObserver observer:observers ){
-            observer.update(myStage,map);
+            observer.update(myStage,map,animalRepresentative);
         }
     }
 
@@ -110,9 +116,7 @@ public class SimulationEngine implements Runnable{
         }
     }
 
-    private void createScene(){
 
-    }
 
 }
 

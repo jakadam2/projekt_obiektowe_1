@@ -91,6 +91,8 @@ public class Animal implements IMapElement{
     }
 
     public Animal breed(Animal partner){
+        child ++;
+        partner.informBreed();
         int motherLoseEnergy = (int) (this.energy * this.loseBreedEnergy);
         int fatherLoseEnergy = (int) (partner.energy * this.loseBreedEnergy);
         int energy = motherLoseEnergy + fatherLoseEnergy;
@@ -171,9 +173,10 @@ public class Animal implements IMapElement{
     public int getEnergy(){return energy;}
 
     public void eatPlant(Plant plant){
-        System.out.println(energy);
+        //System.out.println(energy);
         energy += plant.energy;
-        System.out.println(energy);
+        //System.out.println(energy);
+        eatenPlant ++;
     }
 
     public boolean isDead(){return this.energy <= 0;}
@@ -181,5 +184,30 @@ public class Animal implements IMapElement{
     public int getColor(){
         if(energy < 0){throw new IllegalStateException("DRAWING DEAD ANIMALS IS UNAVAILABLE");}
         return ((int)energy/3) + 1;
+    }
+
+    public String getGenom(){
+        return Arrays.toString(genom);
+    }
+
+    public String getActiveGen(){
+        return Integer.toString(activeGen);
+    }
+
+    public String getEatenPlant(){
+        return Integer.toString(eatenPlant);
+    }
+
+    public String getLivedDays(){
+        return Integer.toString(livedDays);
+    }
+
+    public String getChild(){
+        return Integer.toString(child);
+    }
+
+
+    public void informBreed(){
+        child ++;
     }
 }
