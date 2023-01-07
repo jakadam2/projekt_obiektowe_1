@@ -10,7 +10,7 @@ public enum MapDirection {
         this.dirNr = dirNr;
     }
 
-    final private static MapDirection[] dirPositionNr = {NORTH,NORTH_EAST,EAST, SOUTH_EAST,SOUTH,SOUTH_WEST,WEST,NORTH_WEST};
+    private final static MapDirection[] dirPositionNr = {NORTH,NORTH_EAST,EAST, SOUTH_EAST,SOUTH,SOUTH_WEST,WEST,NORTH_WEST};
 
     public Vector2d toUnitVector(){
         int newX = 0;

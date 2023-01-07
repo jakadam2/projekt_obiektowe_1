@@ -19,19 +19,15 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.concurrent.atomic.AtomicReference;
+
 
 public class App extends Application implements IStateObserver {
 
     private ElementRepresentative representative = new ElementRepresentative();
     Stage window;
-    Scene settingsMenu, simulation;
-
+    Scene settingsMenu;
     Image boundary;
-
     Button test;
-
-
 
     public void init(){
         try{
@@ -39,10 +35,6 @@ public class App extends Application implements IStateObserver {
         catch (FileNotFoundException exception){
             System.exit(3);
         }
-        test = new Button("test");
-        test.setOnAction(e -> {
-            System.out.println("OK");
-        });
     }
     public void start(Stage primaryStage){
         Platform.runLater(() -> {
@@ -58,7 +50,7 @@ public class App extends Application implements IStateObserver {
     private void drawInterior(GridPane grid,AbstractWorldMap map){
         MapElementBox box;
         Vector2d currPosition;
-        ImageView view = new ImageView();
+        ImageView view;
         for(int i = 0; i <= map.x; i ++){
             grid.add(new ImageView(boundary),i,0,1,1);
         }
@@ -234,8 +226,6 @@ public class App extends Application implements IStateObserver {
                 settings.setGenomLength(Integer.parseInt(genomLengthInput.getText()));
                 settings.setMoveType(moveTypeInput.getValue());
 
-                //System.out.println(settings.getMapType());
-
                 startSimulation(settings);
             });
             GridPane.setConstraints(start, 1, 30);
@@ -274,7 +264,6 @@ public class App extends Application implements IStateObserver {
         Thread engineThread = new Thread(engine);
         engineThread.start();
         engine.addObserver(this);
-
     }
 
     @Override
@@ -284,7 +273,6 @@ public class App extends Application implements IStateObserver {
         grid.setGridLinesVisible(true);
         VBox animalInfo = animalRepresentative.getInfo();
         VBox simulationInfo = generateSimulationData(map);
-        Button guzik = new Button("END");
         Platform.runLater(() -> {
             VBox view = new VBox(grid,animalInfo, simulationInfo,engine.buttons);
             view.setAlignment(Pos.CENTER);
@@ -292,7 +280,7 @@ public class App extends Application implements IStateObserver {
             myStage.setScene(scene);
             myStage.show();
         });}
-    //System.out.println("rysunek");}
+
 
     private VBox generateSimulationData(AbstractWorldMap map) {
         GridPane grid = new GridPane();

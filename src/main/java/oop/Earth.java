@@ -1,7 +1,6 @@
 package oop;
 
 public class Earth extends AbstractWorldMap{
-
     private final int width;
     private final int height;
 

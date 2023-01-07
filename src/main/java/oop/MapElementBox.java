@@ -4,9 +4,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class MapElementBox {
-
     private Plant plant;
-    Set<Animal> animals = new HashSet<>();
+    private Set<Animal> animals = new HashSet<>();
     private final Vector2d position;
     private boolean includePlant = false;
 

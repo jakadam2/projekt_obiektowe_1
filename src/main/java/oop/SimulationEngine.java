@@ -1,13 +1,10 @@
 package oop;
 
-import javafx.application.Platform;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import oop.Gui.AnimalRepresentative;
-import oop.Gui.ElementRepresentative;
-
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
@@ -17,25 +14,20 @@ import java.util.Set;
 
 public class SimulationEngine implements Runnable{
 
-    Settings config;
-    Stage myStage;
-    Set<Animal> animals = new HashSet<>();
-
-    AnimalRepresentative animalRepresentative;
-    AbstractWorldMap map;
-    Set<IStateObserver> observers;
-
-    Button waitButton;
-
-    Button endButton;
+    private final Settings config;
+    private Stage myStage;
+    private Set<Animal> animals = new HashSet<>();
+    private AnimalRepresentative animalRepresentative;
+    private final AbstractWorldMap map;
+    private Set<IStateObserver> observers;
 
     private boolean stopped;
 
     private boolean working;
 
-    public Button end;
+    private Button end;
 
-    public Button stop;
+    private Button stop;
 
     public HBox buttons;
 
@@ -66,16 +58,21 @@ public class SimulationEngine implements Runnable{
     public void run(){
         working = true;
         stopped = false;
+
         Set<Animal> toAdd;
         Set<Animal> toRemove;
+
         initAnimals();
         initPlants();
-        System.out.println(animals.size());
+
         int day = 1;
+
         try (FileWriter writer = new FileWriter("data.csv")) {
             writer.write("day;amountOfAnimals;amountOfPlants;amountOfFreePlaces;mostPopularGenome;avgAnimalEnergy;avgLifeTime");
             writer.write(System.lineSeparator());
+
         while(true){
+            //petla obslugujaca zatrzymanie sumulacj i wybor zwierzecia do sledzenia
             while (stopped){
                 if(!animalRepresentative.isTracking() || animalRepresentative.hasDeadAnimal()){
                     Iterator animalIterator  = animals.iterator();
@@ -85,7 +82,6 @@ public class SimulationEngine implements Runnable{
                     }
                     animalRepresentative.setAnimal(strongest);
                 }
-
                 if(!working){break;}
                 try {
                     Thread.sleep(100);
@@ -93,24 +89,26 @@ public class SimulationEngine implements Runnable{
                     throw new RuntimeException(e);
                 }
             }
+
             moveAnimals();
             toRemove =  map.checkDying();
-            if(!working){break;}
             removeAnimals(toRemove);
             toAdd = map.checkReproduction();
             addAnimals(toAdd);
             map.checkEating();
             spawnGrass();
             if(animals.isEmpty()){
-                System.out.println("end");
                 break;
                 }
             toRemove =  map.checkDying();
             removeAnimals(toRemove);
+
+            if(!working){break;}
             moveDelay();
             if(!working){break;}
             notifyObservers();
             if(!working){break;}
+
             String data = day + ";" + map.getAmountAnimals() + ";" + map.getAmountPlants() + ";" + map.getAmountFreePlaces() + ";" + Arrays.toString(map.getMostPopularGenomes()) + ";" +
                     map.getAvgEnergy() + ";" + map.getAvgLifeDeadAnimals();
 
@@ -123,7 +121,6 @@ public class SimulationEngine implements Runnable{
         }
 
 
-        System.out.println("SYMULACJA ZAKONCZONA POPRAWNIE");
 
     }
 
@@ -148,7 +145,7 @@ public class SimulationEngine implements Runnable{
     }
 
     public void removeObserver(IStateObserver observer){
-        observers.remove(observer);//tu mozna rzucic wyjatek jak go nie ma
+        observers.remove(observer);
     }
 
     private void initPlants(){
@@ -171,7 +168,6 @@ public class SimulationEngine implements Runnable{
         for(Animal animal:toRemove){
             animals.remove(animal);
         }
-        //System.out.println(animals.size());
     }
 
     private void addAnimals(Set<Animal> toAdd){
@@ -187,7 +183,6 @@ public class SimulationEngine implements Runnable{
     }
 
     public void end(){
-        System.out.println("END");
             this.working = false;
             myStage.close();
     }

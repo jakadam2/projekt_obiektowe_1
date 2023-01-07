@@ -154,7 +154,6 @@ public class Animal implements IMapElement{
         }
         else for(int i = 0; i < howManyMutations; i++) genome[changeTheseGens[i]] = generator.nextInt(8);
 
-        // co z tym configiem tu
         return new Animal(this, genome, energy);
     }
 

@@ -32,7 +32,6 @@ public class AnimalRepresentative {
         grid.setHgap(20);
         grid.setVgap(20);
         grid.setAlignment(Pos.CENTER);
-        //grid.setGridLinesVisible(true);
         Label label = new Label("INFORMACJE O ZWIERZECIU");
         VBox box = new VBox(label,grid);
         box.setAlignment(Pos.CENTER);

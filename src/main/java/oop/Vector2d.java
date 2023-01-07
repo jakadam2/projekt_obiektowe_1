@@ -32,6 +32,4 @@ public class Vector2d{
     public int hashCode(){
         return Objects.hash(x,y);
     }
-
-
 }

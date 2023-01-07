@@ -4,11 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="dodane przyciski + mechanika wybieranie do sledzenia przy zatrzymaniu">
-      <change afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/InformationWrtiter.java" afterDir="false" />
+    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="osteczny test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Animal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Earth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Earth.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/AnimalRepresentative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/AnimalRepresentative.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/MapDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/MapDirection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/MapElementBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/MapElementBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/MyRandom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/MyRandom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Plant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Vector2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Vector2d.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/World.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +183,8 @@
       <workItem from="1673025780113" duration="599000" />
       <workItem from="1673038111335" duration="3092000" />
       <workItem from="1673082603821" duration="12414000" />
-      <workItem from="1673098883582" duration="884000" />
+      <workItem from="1673098883582" duration="1258000" />
+      <workItem from="1673100181238" duration="1583000" />
     </task>
     <task id="LOCAL-00001" summary="grass,mapdir,vector">
       <created>1670586575378</created>
@@ -295,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1673095123267</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="osteczny test">
+      <created>1673100086379</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1673100086379</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -340,7 +357,8 @@
     <MESSAGE value="nawet sie ruszają" />
     <MESSAGE value="dzialająca mechanika mapy + działająca mechanika wyświetlania info o zwierzęciu" />
     <MESSAGE value="dodane przyciski + mechanika wybieranie do sledzenia przy zatrzymaniu" />
-    <option name="LAST_COMMIT_MESSAGE" value="dodane przyciski + mechanika wybieranie do sledzenia przy zatrzymaniu" />
+    <MESSAGE value="osteczny test" />
+    <option name="LAST_COMMIT_MESSAGE" value="osteczny test" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -7,20 +7,12 @@ public abstract class AbstractWorldMap implements IPositionObserver {
     public final int y;//włącznie
     private final int plantPerDay;
     private Map<Vector2d,MapElementBox> boxes = new HashMap<>();
-
     private List<Animal> deadAnimals = new ArrayList<>();
-
-    HashMap<Vector2d, Integer> deadPlaces = new HashMap<>();
-
-    HashMap<int[], Integer> genomes = new HashMap<>();
-
-    private SortedMap<Vector2d,Integer> toxic;
-
-    private SortedMap<Vector2d,Integer> neutral;
-    private int plantEnergy;
+    private HashMap<Vector2d, Integer> deadPlaces = new HashMap<>();
+    private HashMap<int[], Integer> genomes = new HashMap<>();
+    private final int plantEnergy;
     private MyRandom generator = new MyRandom();
     private final PlantType plantType;
-
     private final int breedEnergy;
 
     public AbstractWorldMap(Settings config){
@@ -35,7 +27,7 @@ public abstract class AbstractWorldMap implements IPositionObserver {
     public void place(IMapElement element){
         if(!(element.getPosition().x <= this.x && element.getPosition().y <= this.y)){throw new IllegalArgumentException("WRONG POSITION");}
         if(boxes.get(element.getPosition()) == null){
-            MapElementBox newBox = new MapElementBox(element.getPosition());//wywalic jak nie korzysta z pozycji
+            MapElementBox newBox = new MapElementBox(element.getPosition());
             newBox.add(element);
             boxes.put(element.getPosition(),newBox);
         }
@@ -52,7 +44,6 @@ public abstract class AbstractWorldMap implements IPositionObserver {
             else {
                 genomes.put(animal.getGenom(), 1);
             }
-
         }
     }
 
@@ -63,7 +54,7 @@ public abstract class AbstractWorldMap implements IPositionObserver {
         this.boxes.get(oldPosition).remove(animal);
         if(this.boxes.get(oldPosition).isEmpty()){this.boxes.remove(oldPosition);}
         if(boxes.get(newPosition) == null){
-            MapElementBox newBox = new MapElementBox(newPosition);//wywalic jak nie korzysta z pozycji
+            MapElementBox newBox = new MapElementBox(newPosition);
             newBox.add(animal);
             boxes.put(newPosition,newBox);
         }
@@ -78,8 +69,8 @@ public abstract class AbstractWorldMap implements IPositionObserver {
             if(box.includePlant()){
                 Set<Animal> animals = box.getAnimals();
                 if (animals.size() == 0){break;}
-                Iterator animalIterator  = animals.iterator();
-                Animal strongest = (Animal) animalIterator.next();
+                Iterator<Animal> animalIterator  = animals.iterator();
+                Animal strongest = animalIterator.next();
                 for(Animal animal:animals){
                     if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
                 }
@@ -90,9 +81,9 @@ public abstract class AbstractWorldMap implements IPositionObserver {
         for(Plant plant: toRemove){
             remove(plant);
         }
-
     }
-    public void remove(IMapElement element){// mozna tu rzucic wyjatek gdyby jakims cudem to zwierze bylo zdjete
+
+    public void remove(IMapElement element){
         moveAnimalToKilled(element);
         this.boxAt(element.getPosition()).remove(element);
         if(boxAt(element.getPosition()).isEmpty()){
@@ -126,8 +117,6 @@ public abstract class AbstractWorldMap implements IPositionObserver {
                 }
             }
         }
-        //System.out.println("born");
-        //System.out.println(toAdd.size());
         for(Animal animal:toAdd){
             place(animal);
         }
@@ -137,12 +126,16 @@ public abstract class AbstractWorldMap implements IPositionObserver {
     public void addGrass(){
         if (plantType == PlantType.JUNGLE){
             int grassField = (int) (0.2 * this.y);
+            //wyznaczam srodek mapy
             int middle = this.y/2;
+            //wyznaczam poczatek i koniec pasa zieleni
             int start = middle - (grassField/2);
             int stop = middle + (grassField/2);
             int random = generator.nextInt(10);
             Vector2d position;
+            //roslina rosnie poza pasem
             if(random < 2){
+                //losuje czy nad pasem czy pod
                 int secondRandom = generator.nextInt(2);
                 if(secondRandom == 0){
                     position = new Vector2d(generator.nextInt(x), generator.nextInt(start) );
@@ -150,14 +143,13 @@ public abstract class AbstractWorldMap implements IPositionObserver {
                 else{
                     position = new Vector2d(generator.nextInt(x),generator.nextInt(start) + stop );
                 }
-
             }
+            //roslina rosnie w pasie
             else {
                 position = new Vector2d(generator.nextInt(x), start + generator.nextInt(grassField));
                 place(new Plant(position,plantEnergy));
             }
             place(new Plant(position,plantEnergy));
-            //System.out.println(position.toString());
         }
 
         else {
@@ -213,7 +205,6 @@ public abstract class AbstractWorldMap implements IPositionObserver {
                 Set<Animal> animals = box.getAnimals();
                 for(Animal animal: animals){
                     if(animal.isDead()){
-                        //System.out.println("died");
                         toRemove.add(animal);
                     }
                 }

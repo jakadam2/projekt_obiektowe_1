@@ -4,8 +4,6 @@ import java.util.Random;
 
 public class MyRandom extends Random {
     private Random generator = new Random();
-
-    private Settings config;
     public MapDirection nextDirection(){
         int dir = generator.nextInt(8);
         return switch (dir){
