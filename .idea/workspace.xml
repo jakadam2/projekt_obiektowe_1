@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="osteczny test">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PreSettings/Settings1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PreSettings/Settings1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PreSettings/Settings2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PreSettings/Settings2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PreSettings/Settings3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PreSettings/Settings3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/ElementRepresentative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/ElementRepresentative.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Settings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/3.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/4.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/5.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/boundary.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/boundary.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/grass.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/grass.png" afterDir="false" />
-    </list>
+    <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="osteczny test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -61,7 +44,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Studia/obiektowe/projekty/projekt_obiektowe_1&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Studia/obiektowe/test_proj/projekt_obiektowe_1&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
@@ -189,6 +172,7 @@
       <workItem from="1673098883582" duration="1258000" />
       <workItem from="1673100181238" duration="1583000" />
       <workItem from="1673111503408" duration="2333000" />
+      <workItem from="1673114388764" duration="30000" />
     </task>
     <task id="LOCAL-00001" summary="grass,mapdir,vector">
       <created>1670586575378</created>

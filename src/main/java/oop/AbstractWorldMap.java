@@ -25,7 +25,7 @@ public abstract class AbstractWorldMap implements IPositionObserver {
     }
 
     public void place(IMapElement element){
-        if(!(element.getPosition().x <= this.x && element.getPosition().y <= this.y)){throw new IllegalArgumentException("WRONG POSITION");}
+        if(!(element.getPosition().x <= this.x + 1 && element.getPosition().y <= this.y + 1)){throw new IllegalArgumentException("WRONG POSITION");}
         if(boxes.get(element.getPosition()) == null){
             MapElementBox newBox = new MapElementBox(element.getPosition());
             newBox.add(element);
