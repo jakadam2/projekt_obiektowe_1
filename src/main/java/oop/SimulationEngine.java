@@ -39,15 +39,9 @@ public class SimulationEngine implements Runnable{
         this.observers = new HashSet<>();
         this.animalRepresentative = new AnimalRepresentative();
         end = new Button("END");
-        end.setOnAction(e -> {
-            System.out.println("PUSH");
-            end();
-        });
+        end.setOnAction(e -> end());
         stop = new Button("STOP");
-        stop.setOnAction(e -> {
-            System.out.println("PUSH");
-            stop();
-        });
+        stop.setOnAction(e -> stop());
         buttons = new HBox(stop,end);
         buttons.setSpacing(100);
         buttons.setAlignment(Pos.CENTER);

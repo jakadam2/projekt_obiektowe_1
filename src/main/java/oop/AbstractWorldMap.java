@@ -153,27 +153,25 @@ public abstract class AbstractWorldMap implements IPositionObserver {
         }
 
         else {
-            // Bierzemy 20% najbardziej umieralnych pól
-
-
             // Rozlozenie mapy na dwie tablicy w sposob taki aby indeksy sie zgadzaly
-            Vector2d[] positions = new Vector2d[(int) (deadPlaces.size())];
+            Vector2d[] positionsAll = new Vector2d[(int) (deadPlaces.size())];
             Integer[] values = new Integer[(int) (deadPlaces.size())];
             int index = 0;
             for(Map.Entry<Vector2d, Integer> mapEntry: deadPlaces.entrySet()) {
-                positions[index] = mapEntry.getKey();
+                positionsAll[index] = mapEntry.getKey();
                 values[index] = mapEntry.getValue();
                 index++;
             }
 
             // Sortowanie tablic z pozycjami na podstawie kluczy(czestotliwosci ich wystepowania w kierunku rosnacym)
-            final List<Vector2d> positionsListCopy = Arrays.asList(positions);
-            ArrayList<Vector2d> sortedPositions = new ArrayList<>(positionsListCopy);
-            sortedPositions.sort(Comparator.comparing(s -> values[positionsListCopy.indexOf(s)]));
+            final List<Vector2d> positionsAllListCopy = Arrays.asList(positionsAll);
+            ArrayList<Vector2d> sortedPositions = new ArrayList<>(positionsAllListCopy);
+            sortedPositions.sort(Comparator.comparing(s -> values[positionsAllListCopy.indexOf(s)]));
             Arrays.sort(values);
 
-            // Ile pól bierzemy pod uwage w przypadku corpses
+            // Ile pól bierzemy pod uwage w przypadku corpses oraz te pola na ktorych najrzadziej umieraja wkladam do tablicy:)
             int numbers = (int) (0.2 * deadPlaces.size());
+            Vector2d[] positions = Arrays.copyOfRange(positionsAll, 0, numbers);
 
             int random = generator.nextInt(10);
 
@@ -188,8 +186,8 @@ public abstract class AbstractWorldMap implements IPositionObserver {
             else {
                 // losowanie w przedziale <min;max>:  rand(max - min + 1) + min
 
-                int max = deadPlaces.size() - 1;
-                int min = max - numbers + 1;
+                int max = positions.length - 1;
+                int min = 0;
 
                 int generate = generator.nextInt(max - min + 1) + min;
                 pos = new Vector2d(positions[generate].x, positions[generate].y);

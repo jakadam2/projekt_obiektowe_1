@@ -6,18 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="osteczny test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PreSettings/Settings1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PreSettings/Settings1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PreSettings/Settings2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PreSettings/Settings2.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PreSettings/Settings3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/PreSettings/Settings3.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Earth.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Earth.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/AnimalRepresentative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/AnimalRepresentative.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/MapDirection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/MapDirection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/MapElementBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/MapElementBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/MyRandom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/MyRandom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/ElementRepresentative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/ElementRepresentative.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Settings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Settings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Vector2d.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Vector2d.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/World.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/World.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/1.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/1.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/3.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/4.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/4.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/5.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/5.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/boundary.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/boundary.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/grass.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/grass.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -185,6 +188,7 @@
       <workItem from="1673082603821" duration="12414000" />
       <workItem from="1673098883582" duration="1258000" />
       <workItem from="1673100181238" duration="1583000" />
+      <workItem from="1673111503408" duration="2333000" />
     </task>
     <task id="LOCAL-00001" summary="grass,mapdir,vector">
       <created>1670586575378</created>

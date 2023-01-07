@@ -51,6 +51,8 @@ public class App extends Application implements IStateObserver {
         MapElementBox box;
         Vector2d currPosition;
         ImageView view;
+        int[] popGenome = map.getMostPopularGenomes();
+        representative.setPopGenome(popGenome);
         for(int i = 0; i <= map.x; i ++){
             grid.add(new ImageView(boundary),i,0,1,1);
         }

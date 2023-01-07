@@ -2,25 +2,25 @@ package oop;
 
 public class Settings {
 
-    private MapType mapType = MapType.EARTH;
-    private int mapWidth = 5;
-    private int mapHeight = 5;
+    private MapType mapType;
+    private int mapWidth;
+    private int mapHeight;
 
-    private PlantType plantType = PlantType.JUNGLE;
-    private int startPlant = 3;
-    private int dailyPlant = 3;
-    private int energyPlant = 2;
+    private PlantType plantType;
+    private int startPlant;
+    private int dailyPlant;
+    private int energyPlant;
 
-    private int startAnimal = 4;
-    private int startEnergyAnimal = 100;
-    private int breedEnergy = 4;
-    private double breedLoseEnergy = 0.6;
-    private int genomLength = 7;
-    private MoveType moveType = MoveType.CORRECT;
+    private int startAnimal;
+    private int startEnergyAnimal;
+    private int breedEnergy;
+    private double breedLoseEnergy;
+    private int genomLength;
+    private MoveType moveType;
 
-    private MutationType mutationType = MutationType.LITTLE_CORRECTION;
-    private int minMutation = 1;
-    private int maxMutation = 3;
+    private MutationType mutationType;
+    private int minMutation;
+    private int maxMutation;
 
     public MapType getMapType() {
         return mapType;
