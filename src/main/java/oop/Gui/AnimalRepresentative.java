@@ -79,4 +79,8 @@ public class AnimalRepresentative {
         return animal != null;
     }
 
+    public boolean hasDeadAnimal(){
+        return animal.getEnergy() <= 0;
+    }
+
 }

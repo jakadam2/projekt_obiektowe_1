@@ -9,7 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import oop.*;
@@ -20,6 +19,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class App extends Application implements IStateObserver {
 
@@ -29,6 +29,9 @@ public class App extends Application implements IStateObserver {
 
     Image boundary;
 
+    Button test;
+
+
 
     public void init(){
         try{
@@ -36,6 +39,10 @@ public class App extends Application implements IStateObserver {
         catch (FileNotFoundException exception){
             System.exit(3);
         }
+        test = new Button("test");
+        test.setOnAction(e -> {
+            System.out.println("OK");
+        });
     }
     public void start(Stage primaryStage){
         Platform.runLater(() -> {
@@ -265,44 +272,23 @@ public class App extends Application implements IStateObserver {
         else{map = new Earth(settings);}
         SimulationEngine engine = new SimulationEngine(settings,map,newStage);
         Thread engineThread = new Thread(engine);
-        Button waitButton = new Button("STOP");
-        Button endButton = new Button("END");
-        Platform.runLater(() -> {
-
-            waitButton.setOnAction(e -> {
-                try {
-                    engineThread.wait();
-                }
-                catch (InterruptedException exception){
-                    System.out.println("WAIT ERROR");
-                    System.exit(5);
-                }
-            });
-
-            endButton.setOnAction(e -> {
-                engineThread.interrupt();
-            });
-        });
-
-        engine.setEndButton(endButton);
-        engine.setWaitButton(waitButton);
         engineThread.start();
         engine.addObserver(this);
 
     }
 
     @Override
-    public void update(Stage myStage, AbstractWorldMap map, AnimalRepresentative animalRepresentative,HBox buttons) {
+    public void update(Stage myStage, AbstractWorldMap map, AnimalRepresentative animalRepresentative,SimulationEngine engine) {
         GridPane grid = new GridPane();
         drawInterior(grid,map);
         grid.setGridLinesVisible(true);
         VBox animalInfo = animalRepresentative.getInfo();
         VBox simulationInfo = generateSimulationData(map);
-        VBox view = new VBox(grid,animalInfo, simulationInfo,buttons);
-        view.setAlignment(Pos.CENTER);
-        Scene scene = new Scene(view);
-
+        Button guzik = new Button("END");
         Platform.runLater(() -> {
+            VBox view = new VBox(grid,animalInfo, simulationInfo,engine.buttons);
+            view.setAlignment(Pos.CENTER);
+            Scene scene = new Scene(view);
             myStage.setScene(scene);
             myStage.show();
         });}
@@ -316,19 +302,19 @@ public class App extends Application implements IStateObserver {
         grid.add(numberOfAnimals, 0, 0, 1, 1);
 
         Label numberOfPlants = new Label("Liczba roslin: " + map.getAmountPlants());
-        grid.add(numberOfPlants, 1, 0, 1, 1);
+        grid.add(numberOfPlants, 0, 1, 1, 1);
 
         Label numberOfFreePlaces = new Label("Liczba wolnych pol: " + map.getAmountFreePlaces());
-        grid.add(numberOfFreePlaces, 2, 0, 1, 1);
+        grid.add(numberOfFreePlaces, 1, 0, 1, 1);
 
         Label theMostPopularGenome = new Label("Najpopularniejszy genotop: " + Arrays.toString(map.getMostPopularGenomes()));
         grid.add(theMostPopularGenome, 1, 1, 1, 1);
 
         Label numberOfAvgEnergy = new Label("Sredni poziom energi zyjacych zwierzat: " + map.getAvgEnergy());
-        grid.add(numberOfAvgEnergy, 0, 2, 1, 1);
+        grid.add(numberOfAvgEnergy, 2, 0, 1, 1);
 
         Label numberOfAvgLife = new Label("Sredni poziom zycia zmarlych zwierzat: " + map.getAvgLifeDeadAnimals());
-        grid.add(numberOfAvgLife, 1, 2, 1, 1);
+        grid.add(numberOfAvgLife, 2, 1, 1, 1);
 
         grid.setVgap(20);
         grid.setHgap(20);

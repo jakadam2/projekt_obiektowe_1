@@ -81,7 +81,6 @@ public abstract class AbstractWorldMap implements IPositionObserver {
                 for(Animal animal:animals){
                     if (animal.getEnergy() > strongest.getEnergy()){strongest = animal;}
                 }
-                System.out.println("Powinienem zjesc");
                 strongest.eatPlant(box.getPlant());
                 toRemove.add(box.getPlant());
             }

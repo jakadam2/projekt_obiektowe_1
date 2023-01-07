@@ -7,8 +7,6 @@
     <list default="true" id="d304ca0b-ca78-45fb-92d3-528812653c75" name="Changes" comment="dzialająca mechanika mapy + działająca mechanika wyświetlania info o zwierzęciu">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/AbstractWorldMap.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Animal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Animal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/AnimalRepresentative.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/AnimalRepresentative.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/Gui/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/IStateObserver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/IStateObserver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop/SimulationEngine.java" afterDir="false" />
@@ -176,6 +174,7 @@
       <workItem from="1673018188244" duration="148000" />
       <workItem from="1673025780113" duration="599000" />
       <workItem from="1673038111335" duration="3092000" />
+      <workItem from="1673082603821" duration="12082000" />
     </task>
     <task id="LOCAL-00001" summary="grass,mapdir,vector">
       <created>1670586575378</created>
