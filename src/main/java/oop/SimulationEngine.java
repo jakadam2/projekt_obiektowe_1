@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 import oop.Gui.AnimalRepresentative;
 import oop.Gui.ElementRepresentative;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -35,6 +38,7 @@ public class SimulationEngine implements Runnable{
     public Button stop;
 
     public HBox buttons;
+
 
     public SimulationEngine(Settings config,AbstractWorldMap map,Stage stage){
         this.myStage = stage;
@@ -67,6 +71,10 @@ public class SimulationEngine implements Runnable{
         initAnimals();
         initPlants();
         System.out.println(animals.size());
+        int day = 1;
+        try (FileWriter writer = new FileWriter("data.csv")) {
+            writer.write("day;amountOfAnimals;amountOfPlants;amountOfFreePlaces;mostPopularGenome;avgAnimalEnergy;avgLifeTime");
+            writer.write(System.lineSeparator());
         while(true){
             while (stopped){
                 if(!animalRepresentative.isTracking() || animalRepresentative.hasDeadAnimal()){
@@ -103,8 +111,17 @@ public class SimulationEngine implements Runnable{
             if(!working){break;}
             notifyObservers();
             if(!working){break;}
+            String data = day + ";" + map.getAmountAnimals() + ";" + map.getAmountPlants() + ";" + map.getAmountFreePlaces() + ";" + Arrays.toString(map.getMostPopularGenomes()) + ";" +
+                    map.getAvgEnergy() + ";" + map.getAvgLifeDeadAnimals();
 
+            writer.write(data);
+            writer.write(System.lineSeparator());
+            day++;
+        }}
+        catch (IOException ex) {
+            System.out.println(ex.getMessage());
         }
+
 
         System.out.println("SYMULACJA ZAKONCZONA POPRAWNIE");
 

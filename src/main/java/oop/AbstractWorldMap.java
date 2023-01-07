@@ -10,6 +10,8 @@ public abstract class AbstractWorldMap implements IPositionObserver {
 
     private List<Animal> deadAnimals = new ArrayList<>();
 
+    HashMap<Vector2d, Integer> deadPlaces = new HashMap<>();
+
     HashMap<int[], Integer> genomes = new HashMap<>();
 
     private SortedMap<Vector2d,Integer> toxic;
@@ -151,7 +153,7 @@ public abstract class AbstractWorldMap implements IPositionObserver {
 
             }
             else {
-                position = new Vector2d(generator.nextInt(x), start +generator.nextInt(grassField));
+                position = new Vector2d(generator.nextInt(x), start + generator.nextInt(grassField));
                 place(new Plant(position,plantEnergy));
             }
             place(new Plant(position,plantEnergy));
@@ -159,9 +161,48 @@ public abstract class AbstractWorldMap implements IPositionObserver {
         }
 
         else {
-            //tu trzeba cos napisac
+            // Bierzemy 20% najbardziej umieralnych pól
 
-            // 20% pol brac pod to
+
+            // Rozlozenie mapy na dwie tablicy w sposob taki aby indeksy sie zgadzaly
+            Vector2d[] positions = new Vector2d[(int) (deadPlaces.size())];
+            Integer[] values = new Integer[(int) (deadPlaces.size())];
+            int index = 0;
+            for(Map.Entry<Vector2d, Integer> mapEntry: deadPlaces.entrySet()) {
+                positions[index] = mapEntry.getKey();
+                values[index] = mapEntry.getValue();
+                index++;
+            }
+
+            // Sortowanie tablic z pozycjami na podstawie kluczy(czestotliwosci ich wystepowania w kierunku rosnacym)
+            final List<Vector2d> positionsListCopy = Arrays.asList(positions);
+            ArrayList<Vector2d> sortedPositions = new ArrayList<>(positionsListCopy);
+            sortedPositions.sort(Comparator.comparing(s -> values[positionsListCopy.indexOf(s)]));
+            Arrays.sort(values);
+
+            // Ile pól bierzemy pod uwage w przypadku corpses
+            int numbers = (int) (0.2 * deadPlaces.size());
+
+            int random = generator.nextInt(10);
+
+            Vector2d pos;
+            if(random < 2 || numbers <= 0){
+                do {
+                    int posX = generator.nextInt(x);
+                    int posY = generator.nextInt(y);
+                    pos = new Vector2d(posX, posY);
+                } while(Arrays.asList(positions).contains(pos));
+            }
+            else {
+                // losowanie w przedziale <min;max>:  rand(max - min + 1) + min
+
+                int max = deadPlaces.size() - 1;
+                int min = max - numbers + 1;
+
+                int generate = generator.nextInt(max - min + 1) + min;
+                pos = new Vector2d(positions[generate].x, positions[generate].y);
+            }
+            place(new Plant(pos, plantEnergy));
         }
     }
 
@@ -193,7 +234,15 @@ public abstract class AbstractWorldMap implements IPositionObserver {
 
     private void moveAnimalToKilled(Object object) {
         if(object instanceof Animal) {
-            this.deadAnimals.add((Animal) object);
+            Animal animal = (Animal) object;
+            this.deadAnimals.add(animal);
+
+            if(deadPlaces.containsKey(animal.getPosition())) {
+                deadPlaces.put(animal.getPosition(), deadPlaces.get(animal.getPosition()) + 1);
+            }
+            else {
+                deadPlaces.put(animal.getPosition(), 1);
+            }
         }
     }
 
