@@ -4,9 +4,10 @@ import java.util.Random;
 
 public class MyRandom extends Random {
     private Random generator = new Random();
-    public MapDirection nextDirection(){
+
+    public MapDirection nextDirection() {
         int dir = generator.nextInt(8);
-        return switch (dir){
+        return switch (dir) {
             case 0 -> MapDirection.NORTH;
             case 1 -> MapDirection.NORTH_EAST;
             case 2 -> MapDirection.EAST;
@@ -19,15 +20,15 @@ public class MyRandom extends Random {
         };
     }
 
-    public int[] nextGenom(int genomLength){
+    public int[] nextGenom(int genomLength) {
         int[] ans = new int[genomLength];
-        for(int i = 0; i < genomLength;i++){
+        for (int i = 0; i < genomLength; i++) {
             ans[i] = generator.nextInt(8);
         }
         return ans;
     }
 
-    public Vector2d nextPosition(int maxX,int maxY){
+    public Vector2d nextPosition(int maxX, int maxY) {
         return new Vector2d(generator.nextInt(maxX), generator.nextInt(maxY));
     }
 }

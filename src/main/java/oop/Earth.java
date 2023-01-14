@@ -1,6 +1,6 @@
 package oop;
 
-public class Earth extends AbstractWorldMap{
+public class Earth extends AbstractWorldMap {
     private final int width;
     private final int height;
 
@@ -11,17 +11,16 @@ public class Earth extends AbstractWorldMap{
     }
 
     @Override
-    Vector2d checkFinalPosition(Animal animal,Vector2d cand) {
+    Vector2d checkFinalPosition(Animal animal, Vector2d cand) {
 
         if (cand.x > width) {
             return new Vector2d(0, cand.y);
 
-        }
-        else if(cand.x < 0) {
+        } else if (cand.x < 0) {
             return new Vector2d(width, cand.y);
         }
 
-        if(cand.y > height || cand.y < 0) {
+        if (cand.y > height || cand.y < 0) {
 
             animal.orientation = animal.orientation.rotate(4);
             return new Vector2d(cand.x, height);

@@ -1,5 +1,5 @@
 package oop;
 
-public enum PlantType {
-    TOXIC,JUNGLE;
+public enum PlantType { // czy to na pewno typ rośliny?
+    TOXIC, JUNGLE;
 }

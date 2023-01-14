@@ -1,4 +1,5 @@
 package oop.Gui;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.geometry.Pos;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import oop.*;
 import javafx.geometry.Insets;
 import javafx.scene.control.ChoiceBox;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -24,19 +26,20 @@ import java.util.Scanner;
 public class App extends Application implements IStateObserver {
 
     private ElementRepresentative representative = new ElementRepresentative();
-    Stage window;
+    Stage window; // modyfikator dostępu?
     Scene settingsMenu;
     Image boundary;
     Button test;
 
-    public void init(){
-        try{
-            boundary = new Image(new FileInputStream("src/main/resources/boundary.png"));}
-        catch (FileNotFoundException exception){
+    public void init() {
+        try {
+            boundary = new Image(new FileInputStream("src/main/resources/boundary.png"));
+        } catch (FileNotFoundException exception) {
             System.exit(3);
         }
     }
-    public void start(Stage primaryStage){
+
+    public void start(Stage primaryStage) {
         Platform.runLater(() -> {
             window = primaryStage;
             GridPane settingsGrid = new GridPane();
@@ -45,34 +48,35 @@ public class App extends Application implements IStateObserver {
             window.setScene(settingsMenu);
             window.setTitle("Settings");
             window.show();
-        });}
+        });
+    }
 
-    private void drawInterior(GridPane grid,AbstractWorldMap map){
+    private void drawInterior(GridPane grid, AbstractWorldMap map) {
         MapElementBox box;
         Vector2d currPosition;
         ImageView view;
         int[] popGenome = map.getMostPopularGenomes();
         representative.setPopGenome(popGenome);
-        for(int i = 0; i <= map.x; i ++){
-            grid.add(new ImageView(boundary),i,0,1,1);
+        for (int i = 0; i <= map.x; i++) {
+            grid.add(new ImageView(boundary), i, 0, 1, 1);
         }
-        for(int i = 0; i <= map.y; i ++){
-            grid.add(new ImageView(boundary),0,i,1,1);
+        for (int i = 0; i <= map.y; i++) {
+            grid.add(new ImageView(boundary), 0, i, 1, 1);
         }
-        for(int i = 0; i <= map.y; i ++){
-            grid.add(new ImageView(boundary),map.x + 1,i,1,1);
+        for (int i = 0; i <= map.y; i++) {
+            grid.add(new ImageView(boundary), map.x + 1, i, 1, 1);
         }
-        for(int i = 0; i <= map.x; i ++){
-            grid.add(new ImageView(boundary),i,map.y + 1,1,1);
+        for (int i = 0; i <= map.x; i++) {
+            grid.add(new ImageView(boundary), i, map.y + 1, 1, 1);
         }
-        grid.add(new ImageView(boundary),map.x + 1,map.y + 1,1,1);
-        for(int i = 0; i < map.x; i ++){
-            for(int j = 0; j < map.y; j ++){
-                currPosition = new Vector2d(i,j);
-                if(map.isOccupied(currPosition)){
+        grid.add(new ImageView(boundary), map.x + 1, map.y + 1, 1, 1);
+        for (int i = 0; i < map.x; i++) {
+            for (int j = 0; j < map.y; j++) {
+                currPosition = new Vector2d(i, j);
+                if (map.isOccupied(currPosition)) {
                     box = map.boxAt(currPosition);
                     view = representative.getView(box);
-                    grid.add(view,i+1,j+1,1,1);
+                    grid.add(view, i + 1, j + 1, 1, 1);
                 }
             }
         }
@@ -233,7 +237,8 @@ public class App extends Application implements IStateObserver {
             GridPane.setConstraints(start, 1, 30);
 
             grid.getChildren().addAll(start, preSettings1, preSettings2, preSettings3, mapHeightText, mapHeightInput, mapWidthText, mapWidthInput, mapTypeText, mapTypeInput, startPlantText, startPlantInput, energyPlantText, energyPlantInput, dailyPlantText, dailyPlantInput, plantTypeText, plantTypeInput, startAnimalText, startAnimalInput, startEnergyAnimalText, startEnergyAnimalInput, breedEnergyText, breedEnergyInput, breedLoseEnergyText, breedLoseEnergyInput, maxMutationText, maxMutationInput, minMutationText, minMutationInput, mutationTypeText, mutationTypeInput, genomLengthText, genomLengthInput, moveTypeText, moveTypeInput);
-        });}
+        });
+    }
 
     private void getConfig(File file) throws FileNotFoundException {
         Settings settings = new Settings();
@@ -260,28 +265,32 @@ public class App extends Application implements IStateObserver {
     private void startSimulation(Settings settings) {
         AbstractWorldMap map;
         Stage newStage = new Stage();
-        if(settings.getMapType() == MapType.NETHER){map = new Nether(settings);}
-        else{map = new Earth(settings);}
-        SimulationEngine engine = new SimulationEngine(settings,map,newStage);
+        if (settings.getMapType() == MapType.NETHER) {
+            map = new Nether(settings);
+        } else {
+            map = new Earth(settings);
+        }
+        SimulationEngine engine = new SimulationEngine(settings, map, newStage);
         Thread engineThread = new Thread(engine);
         engineThread.start();
         engine.addObserver(this);
     }
 
     @Override
-    public void update(Stage myStage, AbstractWorldMap map, AnimalRepresentative animalRepresentative,SimulationEngine engine) {
+    public void update(Stage myStage, AbstractWorldMap map, AnimalRepresentative animalRepresentative, SimulationEngine engine) {
         GridPane grid = new GridPane();
-        drawInterior(grid,map);
+        drawInterior(grid, map);
         grid.setGridLinesVisible(true);
         VBox animalInfo = animalRepresentative.getInfo();
         VBox simulationInfo = generateSimulationData(map);
         Platform.runLater(() -> {
-            VBox view = new VBox(grid,animalInfo, simulationInfo,engine.buttons);
+            VBox view = new VBox(grid, animalInfo, simulationInfo, engine.buttons);
             view.setAlignment(Pos.CENTER);
             Scene scene = new Scene(view);
             myStage.setScene(scene);
             myStage.show();
-        });}
+        });
+    }
 
 
     private VBox generateSimulationData(AbstractWorldMap map) {
@@ -311,7 +320,7 @@ public class App extends Application implements IStateObserver {
         grid.setAlignment(Pos.CENTER);
         Label label = new Label("INFORMACJE O SYMULACJI");
 
-        VBox box = new VBox(label,grid);
+        VBox box = new VBox(label, grid);
         box.setAlignment(Pos.CENTER);
 
         return box;

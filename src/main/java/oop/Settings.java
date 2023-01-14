@@ -2,7 +2,7 @@ package oop;
 
 public class Settings {
 
-    private MapType mapType;
+    private MapType mapType; // jaki jest sens pól prywatnych, jeśli do wszystkich mamy gettery i settery?
     private int mapWidth;
     private int mapHeight;
 

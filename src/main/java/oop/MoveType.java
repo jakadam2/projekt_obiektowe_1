@@ -1,5 +1,5 @@
 package oop;
 
 public enum MoveType {
-    CORRECT,RANDOM;
+    CORRECT, RANDOM; // correct chyba nie oddaje sedna sprawy
 }
